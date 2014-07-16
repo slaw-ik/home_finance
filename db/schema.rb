@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140716200228) do
+ActiveRecord::Schema.define(version: 20140716223315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "balance_states", force: true do |t|
     t.integer  "user_id"
-    t.float    "debet"
-    t.float    "credet"
+    t.float    "debet",      default: 0.0
+    t.float    "credet",     default: 0.0
     t.date     "on_date"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 20140716200228) do
   create_table "currencies", force: true do |t|
     t.string   "code"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "settings", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "default_currency_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
