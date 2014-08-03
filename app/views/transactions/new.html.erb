@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="col-sm-6">
+    <h1 class="header">Додати розхід</h1>
+
+
+    <%= form_for @transaction, html: {role: "form", class: "form-horizontal"} do |f| %>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="transaction_title" class="col-sm-3 control-label">Назва</label>
+
+            <div class="col-sm-9">
+              <%= f.text_field :title, {class: "form-control", placeholder: "Назва"} %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="transaction_category_id" class="col-sm-3 control-label">Категорія</label>
+
+            <div class="col-sm-9">
+              <%= f.collection_select :category_id, @categories, :id, :name, {:include_blank => '-- Категорія --'}, {:class => 'form-control'} %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <div class="form-group">
+            <label for="transaction_title" class="col-sm-4 control-label">Cума</label>
+
+            <div class="col-sm-8">
+              <%= f.text_field :amount, {class: "form-control", placeholder: "Сума"} %>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <%= f.collection_select :currency_id, Currency.all, :id, :code, {:include_blank => false}, {:class => 'form-control'} %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-offset-3 col-sm-9">
+          <button type="submit" class="btn btn-success">Додати</button>
+        </div>
+      </div>
+    <%- end %>
+  </div>
+</div>
