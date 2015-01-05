@@ -11,7 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
+//= require ./lib/csrf_hack
+//= require handlebars.runtime
+//= require ./lib/underscore
+//= require ./lib/backbone
 //= require bootstrap.min
-//= require turbolinks
-//= require_tree .
+//= require ./app/home_finance

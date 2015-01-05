@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     super
   end
 
+  def index
+
+  end
+
   private
 
   def prepare_data_for(user = nil)
