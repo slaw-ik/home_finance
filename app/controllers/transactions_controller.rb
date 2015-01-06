@@ -1,6 +1,9 @@
 class TransactionsController < ApplicationController
+  respond_to :json
+
   def index
     @transactions = current_user.transactions
+    respond_with @transactions
   end
 
   def new
@@ -12,9 +15,9 @@ class TransactionsController < ApplicationController
     transaction = Transaction.new(transaction_params)
     transaction.user = current_user
     if transaction.save
-      render :status => :created, nothing: true
+      respond_with transaction, :status => :created
     else
-      render :status => :unprocessable_entity, json: transaction.errors
+      respond_with transaction, :status => :unprocessable_entity
     end
   end
 end

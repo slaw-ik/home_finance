@@ -6,7 +6,7 @@ App.Views.Base = Backbone.View.extend({
     if (config) {
       _.extend(this.model, config.model);
     }
-    //this.template = this.template || _.template($(this.tpl).html());
+    this.template = this.template || _.template("");
     App.Views.Base.__super__.initialize.apply(this, arguments);
   },
 

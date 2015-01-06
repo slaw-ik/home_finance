@@ -4,7 +4,7 @@ App.Routers.MainRouter = Backbone.Router.extend({
     "transactions/new": "newTransaction"
   },
 
-  initialize: function(){
+  initialize: function () {
     this.contentView = new App.Views.Content()
   },
 
@@ -12,7 +12,9 @@ App.Routers.MainRouter = Backbone.Router.extend({
     console.log("Root Path");
   },
 
-  newTransaction: function(){
-    this.contentView.swapMain(new App.Views.TransactionPage());
+  newTransaction: function () {
+    this.contentView.swapMain(new App.Views.TransactionPage({
+      model: new App.Models.Transaction()
+    }));
   }
 });

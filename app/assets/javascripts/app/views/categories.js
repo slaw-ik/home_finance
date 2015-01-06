@@ -9,8 +9,8 @@ App.Views.Categories = App.Views.Base.extend({
 
   render: function () {
     App.Views.Categories.__super__.render.apply(this, arguments);
+    this.$('#transaction_category_id').append('<option value="">-- Категорія --</option>');
     this.collection.forEach(this.renderCategory, this);
-    this.$('#transaction_category_id').prepend('<option value="">-- Категорія --</option>');
     return this;
   },
 
