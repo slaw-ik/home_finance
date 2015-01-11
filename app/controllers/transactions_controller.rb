@@ -7,17 +7,21 @@ class TransactionsController < ApplicationController
   end
 
   def new
+    # TODO need to remove in future
     @transaction = Transaction.new
     @categories = current_user.categories
   end
 
   def create
-    transaction = Transaction.new(transaction_params)
-    transaction.user = current_user
+    transaction = Transaction.new(user: current_user,
+                                  title: params[:title],
+                                  currency: Currency.find(params[:currency_id]),
+                                  category: Category.find(params[:category_id]),
+                                  amount: params[:amount].gsub(',', '.').to_f)
     if transaction.save
-      respond_with transaction, :status => :created
+      respond_with transaction, status: :created
     else
-      respond_with transaction, :status => :unprocessable_entity
+      respond_with transaction, status: :unprocessable_entity
     end
   end
 end

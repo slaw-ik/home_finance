@@ -9,10 +9,6 @@ App.Views.Transactinos = App.Views.Base.extend({
     this.listenTo(this.collection, "add", this.renderProject);
   },
 
-  addToCollection: function (model) {
-    this.collection.add(model)
-  },
-
   render: function () {
     App.Views.Transactinos.__super__.render.apply(this, arguments);
     this.collection.forEach(this.renderTransaction, this);
