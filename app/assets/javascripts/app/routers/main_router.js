@@ -13,8 +13,6 @@ App.Routers.MainRouter = Backbone.Router.extend({
   },
 
   newTransaction: function () {
-    this.contentView.swapMain(new App.Views.TransactionPage({
-      model: new App.Models.Transaction()
-    }));
+    this.contentView.swapMain(new App.Views.TransactionPage());
   }
 });
