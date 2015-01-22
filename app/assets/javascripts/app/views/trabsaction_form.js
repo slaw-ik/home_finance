@@ -66,7 +66,7 @@ App.Views.TransactionForm = App.Views.Base.extend({
       category_id: $('#transaction_category_id').val(),
       currency_id: $('#transaction_currency_id').val()
     });
-    this.model.save({}, {
+    this.model.save(this.model.params, {
         success: function (model) {
           App.Vent.trigger("transaction:create", model)
         },

@@ -15,18 +15,24 @@ Currency.create!([
                      {code: 'UAH', name: "UA grivna"}
                  ])
 
+#Populate Transaction types
+TransactionType.create!([
+                            {id: 1, name: 'debet'},
+                            {id: 2, name: 'credit'}
+                        ])
+
 #Populate categories
 Category.create!([
-                     {user_id: 1, name: 'Квартира'},
-                     {user_id: 1, name: 'Харчування'},
-                     {user_id: 1, name: 'Транспорт'},
-                     {user_id: 1, name: 'Інтернет'},
-                     {user_id: 1, name: 'Мобільний звязок'},
-                     {user_id: 1, name: 'Одежа'},
-                     {user_id: 1, name: 'Медикаменти'},
-                     {user_id: 1, name: 'Покупка техніки'},
-                     {user_id: 1, name: 'Відпочнок і подорожі'},
-                     {user_id: 1, name: 'Подарунки і дні народження'},
-                     {user_id: 1, name: 'Автомобіль'},
-                     {user_id: 1, name: 'Інше'}
+                     {user_id: 1, name: 'Квартира', transaction_type_id: 1},
+                     {user_id: 1, name: 'Харчування', transaction_type_id: 1},
+                     {user_id: 1, name: 'Транспорт', transaction_type_id: 1},
+                     {user_id: 1, name: 'Інтернет', transaction_type_id: 1},
+                     {user_id: 1, name: 'Мобільний звязок', transaction_type_id: 1},
+                     {user_id: 1, name: 'Одежа', transaction_type_id: 1},
+                     {user_id: 1, name: 'Медикаменти', transaction_type_id: 1},
+                     {user_id: 1, name: 'Покупка техніки', transaction_type_id: 1},
+                     {user_id: 1, name: 'Відпочнок і подорожі', transaction_type_id: 1},
+                     {user_id: 1, name: 'Подарунки і дні народження', transaction_type_id: 1},
+                     {user_id: 1, name: 'Автомобіль', transaction_type_id: 1},
+                     {user_id: 1, name: 'Інше', transaction_type_id: 1}
                  ])

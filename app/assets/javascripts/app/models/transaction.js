@@ -9,6 +9,10 @@ App.Models.Transaction = Backbone.Model.extend({
     amount: 0
   },
 
+  initialize: function (params) {
+    this.params = params ? params : {};
+  },
+
   validate: function (attrs, options) {
     var errors = {};
     if (!attrs.title) {
@@ -36,5 +40,17 @@ App.Models.Transaction = Backbone.Model.extend({
 
 App.Collections.Transactions = Backbone.Collection.extend({
   model: App.Models.Transaction,
-  url: '/transactions'
+  url: '/transactions',
+
+  initialize: function (params) {
+    this.params = params ? params : {};
+  }
+});
+
+App.Collections.DebetTransactions = App.Collections.Transactions.extend({
+  url: '/transactions?debet=1'
+});
+
+App.Collections.CreditTransactions = App.Collections.Transactions.extend({
+  url: '/transactions?credit=1'
 });
