@@ -10,7 +10,7 @@ App.Models.Transaction = Backbone.Model.extend({
   },
 
   initialize: function (params) {
-    this.params = params ? params : {};
+    this.type = params['type'] ? params['type'] : 'debet';
   },
 
   validate: function (attrs, options) {
@@ -40,17 +40,11 @@ App.Models.Transaction = Backbone.Model.extend({
 
 App.Collections.Transactions = Backbone.Collection.extend({
   model: App.Models.Transaction,
-  url: '/transactions',
+  url: function () {
+    return '/transactions?type=' + this.type
+  },
 
   initialize: function (params) {
-    this.params = params ? params : {};
+    this.type = params['type'] ? params['type'] : 'debet';
   }
-});
-
-App.Collections.DebetTransactions = App.Collections.Transactions.extend({
-  url: '/transactions?debet=1'
-});
-
-App.Collections.CreditTransactions = App.Collections.Transactions.extend({
-  url: '/transactions?credit=1'
 });

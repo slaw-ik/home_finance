@@ -11,5 +11,11 @@ App.Models.Category = Backbone.Model.extend({
 
 App.Collections.Categories = Backbone.Collection.extend({
   model: App.Models.Category,
-  url: '/categories'
+  url: function () {
+    return '/categories?type=' + this.type
+  },
+
+  initialize: function (params) {
+    this.type = params['type'] ? params['type'] : 'debet'
+  }
 });

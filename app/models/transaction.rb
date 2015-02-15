@@ -2,6 +2,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :user
   belongs_to :currency
   belongs_to :category
+  belongs_to :transaction_type
 
   validates :title, presence: true
   validates :amount, presence: true
@@ -10,4 +11,5 @@ class Transaction < ActiveRecord::Base
   validates :category_id, numericality: {greater_than: 0}
   validates :currency_id, presence: true
   validates :currency_id, numericality: {greater_than: 0}
+  validates :transaction_type_id, presence: true
 end

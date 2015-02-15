@@ -2,7 +2,9 @@ class TransactionsController < ApplicationController
   respond_to :json
 
   def index
-    @transactions = current_user.transactions
+    transaction_type_id = TransactionType.find_by_name(params[:type]).try(:id)
+    @transactions = current_user.transactions.where(transaction_type_id: transaction_type_id)
+
     respond_with @transactions
   end
 
@@ -13,11 +15,14 @@ class TransactionsController < ApplicationController
   end
 
   def create
+    transaction_type_id = TransactionType.find_by_name(params[:type]).id
+
     transaction = Transaction.new(user: current_user,
                                   title: params[:title],
                                   currency: Currency.find(params[:currency_id]),
                                   category: Category.find(params[:category_id]),
-                                  amount: params[:amount].gsub(',', '.').to_f)
+                                  amount: params[:amount].gsub(',', '.').to_f,
+                                  transaction_type_id: transaction_type_id)
     if transaction.save
       respond_with transaction, status: :created
     else

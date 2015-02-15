@@ -15,38 +15,24 @@ App.Views.TransactionPage = App.Views.Base.extend({
 
   render: function () {
     App.Views.TransactionPage.__super__.render.apply(this, arguments);
-    this.renderForm();
-    //this.renderTransactions();
-    this.renderDebetTransactions();
+    var type = ((typeof aa != 'undefined') && model.type) ? model.type : 'debet';
+    this.renderForm({type: type});
+    this.renderTransactions({type: type});
     return this;
-  },
-
-  renderForm: function (model) {
-    if (model && model.params.credit && model.params.credit == true) {
-      this.renderCreditForm();
-    } else {
-      this.renderDebetForm();
-    }
   },
 
   renderDebetView: function (e) {
     e.preventDefault();
-    var tab = $(e.currentTarget);
-    if (tab.attr('class') !== 'active') {
-      this.activateTab(tab);
-      this.renderDebetForm();
-      this.renderDebetTransactions();
-    }
+    var tab = $(e.currentTarget),
+      type = 'debet';
+    this.renderView(tab, type);
   },
 
   renderCreditView: function (e) {
     e.preventDefault();
-    var tab = $(e.currentTarget);
-    if (tab.attr('class') !== 'active') {
-      this.activateTab(tab);
-      this.renderCreditForm();
-      this.renderCreditTransactions();
-    }
+    var tab = $(e.currentTarget),
+      type = 'credit';
+    this.renderView(tab, type);
   },
 
   activateTab: function (tab) {
@@ -54,43 +40,24 @@ App.Views.TransactionPage = App.Views.Base.extend({
     tab.addClass('active');
   },
 
-  renderDebetForm: function () {
-    this.model = new App.Models.Transaction({debet: true});
-    var transaction_form = new App.Views.TransactionForm({model: this.model});
-
-    this.$el.find('#new-transaction').html(transaction_form.render().el);
-  },
-
-  renderCreditForm: function () {
-    this.model = new App.Models.Transaction({credit: true});
-    var transaction_form = new App.Views.TransactionForm({model: this.model});
-
-    this.$el.find('#new-transaction').html(transaction_form.render().el);
-  },
-
-  renderTransactions: function () {
-    if (model.params.debet || model.params.credit) {
-      if (model.params.debet && model.params.debet == true) {
-        this.renderDebetTransactions();
-      }
-
-      if (model.params.credit && model.params.credit == true) {
-        this.renderCreditTransactions()
-      }
-    } else {
-
+  renderView: function (tab, type) {
+    if (tab.attr('class') !== 'active') {
+      this.activateTab(tab);
+      this.renderForm({type: type});
+      this.renderTransactions({type: type});
     }
   },
 
-  renderCreditTransactions: function () {
-    var creditTransactions = new App.Views.Transactinos({collection: new App.Collections.CreditTransactions()});
-    this.$('#transactions-table table').append(creditTransactions.render().el);
+  renderForm: function (params) {
+    this.model = new App.Models.Transaction({type: params.type});
+    var transaction_form = new App.Views.TransactionForm({model: this.model});
+
+    this.$el.find('#new-transaction').html(transaction_form.render().el);
   },
 
-  renderDebetTransactions: function () {
-    var debetTransactions = new App.Views.Transactinos({collection: new App.Collections.DebetTransactions()});
-    this.$('#transactions-table table').append(debetTransactions.render().el);
+  renderTransactions: function (params) {
+    var transactions = new App.Views.Transactinos({collection: new App.Collections.Transactions({type: params.type})});
+    this.$('#transactions-table table tbody').replaceWith(transactions.render().el);
   }
-
 
 });

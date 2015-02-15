@@ -6,7 +6,7 @@ App.Views.Transactinos = App.Views.Base.extend({
     this.listenTo(this.collection, 'reset', this.render);
     this.collection.fetch({reset: true});
     this.listenTo(App.Vent, "transaction:create", this.renderTransaction);
-    this.listenTo(this.collection, "add", this.renderProject);
+    //this.listenTo(this.collection, "add", this.renderProject);
   },
 
   render: function () {

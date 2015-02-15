@@ -10,7 +10,7 @@ App.Views.TransactionForm = App.Views.Base.extend({
   initialize: function () {
     App.Views.TransactionForm.__super__.initialize.apply(this, arguments);
 
-    this.categories = new App.Views.Categories({collection: new App.Collections.Categories()});
+    this.categories = new App.Views.Categories({collection: new App.Collections.Categories({type: this.model.type})});
     this.currencies = new App.Views.Currencies({collection: new App.Collections.Currencies()});
 
     this.listenTo(this.model, 'invalid', this.renderValidationError);
@@ -66,7 +66,7 @@ App.Views.TransactionForm = App.Views.Base.extend({
       category_id: $('#transaction_category_id').val(),
       currency_id: $('#transaction_currency_id').val()
     });
-    this.model.save(this.model.params, {
+    this.model.save({}, {
         success: function (model) {
           App.Vent.trigger("transaction:create", model)
         },
