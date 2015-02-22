@@ -7,6 +7,7 @@ class CreateTransactions < ActiveRecord::Migration
       t.integer :category_id
       t.string :title
       t.float :amount
+      t.date :date
 
       t.timestamps
     end

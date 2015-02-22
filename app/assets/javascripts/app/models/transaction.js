@@ -9,12 +9,22 @@ App.Models.Transaction = Backbone.Model.extend({
     amount: 0
   },
 
+  parse: function (raw) {
+    raw.date = moment(raw.date);
+    return raw;
+  },
+
   initialize: function (params) {
     this.type = params['type'] ? params['type'] : 'debet';
   },
 
   validate: function (attrs, options) {
     var errors = {};
+
+    if (!attrs.date || (attrs.date == "Invalid date")) {
+      errors.date = "Date is required field!"
+    }
+
     if (!attrs.title) {
       errors.title = "Title is required field!"
     }

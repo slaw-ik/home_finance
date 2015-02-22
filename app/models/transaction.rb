@@ -4,6 +4,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :category
   belongs_to :transaction_type
 
+  validates :date, presence: true
   validates :title, presence: true
   validates :amount, presence: true
   validates :amount, numericality: {greater_than: 0}

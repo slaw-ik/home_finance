@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20150118224103) do
     t.integer  "category_id"
     t.string   "title"
     t.float    "amount"
+    t.date     "date"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

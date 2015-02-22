@@ -22,7 +22,8 @@ class TransactionsController < ApplicationController
                                   currency: Currency.find(params[:currency_id]),
                                   category: Category.find(params[:category_id]),
                                   amount: params[:amount].gsub(',', '.').to_f,
-                                  transaction_type_id: transaction_type_id)
+                                  transaction_type_id: transaction_type_id,
+                                  date: params[:date].to_date)
     if transaction.save
       respond_with transaction, status: :created
     else

@@ -12,5 +12,6 @@ window.App =
   Vent: _.clone(Backbone.Events)
 
   initialize: ->
+    moment.locale('uk')
     new App.Routers.MainRouter()
     Backbone.history.start()

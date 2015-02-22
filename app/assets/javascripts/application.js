@@ -16,4 +16,7 @@
 //= require ./lib/underscore
 //= require ./lib/backbone
 //= require bootstrap.min
+//= require ./lib/bootstrap-datepicker
+//= require_directory ./lib/locales
+//= require ./lib/moment-with-locales.min
 //= require ./app/home_finance

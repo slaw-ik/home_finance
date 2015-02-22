@@ -18,18 +18,34 @@ App.Views.TransactionForm = App.Views.Base.extend({
   },
 
   render: function () {
+    var me = this;
+    this.model.set('dateNow', moment(new Date).format('D MMM. YYYY'));
+
     App.Views.TransactionForm.__super__.render.apply(this, arguments);
 
     this.$el.find('#categories-group').append(this.categories.render().el);
     this.$el.find('#currencies-group').append(this.currencies.render().el);
+
+    this.$el.find('.transaction_date.input-group.date').datepicker({
+      todayBtn: "linked",
+      language: "uk",
+      autoclose: true,
+      todayHighlight: true,
+      format: 'd M. yyyy'
+    }).on('changeDate', function (e) {
+      me.clearMyError({target: this})
+    });
+
     return this;
   },
 
   renderValidationError: function (model) {
     _.each(_.keys(model.validationError), function (key) {
+      var cross = (key == 'date') ? '' : '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>'
       $('input#transaction_' + key)
         .attr('aria-describedby', 'inputError2' + key)
-        .after('<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span><span id="inputError2Status" class="sr-only">(error)</span>')
+        .after(cross)
+        .after('<span id="inputError2Status" class="sr-only">(error)</span>')
         .closest('.form-group')
         .addClass('has-error has-feedback');
 
@@ -61,6 +77,7 @@ App.Views.TransactionForm = App.Views.Base.extend({
     e.preventDefault();
     this.cleanErrors();
     this.model.set({
+      date: moment($('#transaction_date').val(), 'D MMM. YYYY').format('DD/MM/YYYY'),
       title: $('#transaction_title').val(),
       amount: $('#transaction_amount').val(),
       category_id: $('#transaction_category_id').val(),
