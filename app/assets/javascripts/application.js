@@ -15,8 +15,9 @@
 //= require handlebars.runtime
 //= require ./lib/underscore
 //= require ./lib/backbone
+//= require ./lib/moment-with-locales.min
+//= require ./lib/handlebars_helper
 //= require bootstrap.min
 //= require ./lib/bootstrap-datepicker
 //= require_directory ./lib/locales
-//= require ./lib/moment-with-locales.min
 //= require ./app/home_finance
