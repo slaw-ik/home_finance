@@ -1,0 +1,31 @@
+td.sort-header::-moz-selection { background:transparent; }
+td.sort-header::selection      { background:transparent; }
+td.sort-header {
+    cursor:pointer;
+}
+td.sort-header::-moz-selection,
+td.sort-header::selection {
+    background:transparent;
+}
+table td.sort-header:after {
+    content:'';
+    float:right;
+    margin-top:7px;
+    border-width:0 4px 4px;
+    border-style:solid;
+    border-color:#404040 transparent;
+    visibility:hidden;
+}
+table td.sort-header:hover:after {
+    visibility:visible;
+}
+table td.sort-up:after,
+table td.sort-down:after,
+table td.sort-down:hover:after {
+    visibility:visible;
+    opacity:0.4;
+}
+table td.sort-up:after {
+    border-bottom:none;
+    border-width:4px 4px 0;
+}

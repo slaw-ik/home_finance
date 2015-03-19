@@ -17,6 +17,9 @@
 //= require ./lib/backbone
 //= require ./lib/moment-with-locales.min
 //= require ./lib/handlebars_helper
+//= require ./lib/tablesort
+//= require ./lib/sorts/tablesort.numeric
+//= require ./lib/sorts/tablesort.date
 //= require bootstrap.min
 //= require ./lib/bootstrap-datepicker
 //= require_directory ./lib/locales

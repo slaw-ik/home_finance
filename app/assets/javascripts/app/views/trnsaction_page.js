@@ -18,6 +18,7 @@ App.Views.TransactionPage = App.Views.Base.extend({
     var type = ((typeof aa != 'undefined') && model.type) ? model.type : 'debet';
     this.renderForm({type: type});
     this.renderTransactions({type: type});
+    new Tablesort(this.$el.find('#transactions-table > table')[0]);
     return this;
   },
 
