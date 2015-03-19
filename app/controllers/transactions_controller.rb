@@ -26,7 +26,10 @@ class TransactionsController < ApplicationController
                                   transaction_type_id: transaction_type_id,
                                   date: params[:date].to_date)
     if transaction.save
-      respond_with transaction, status: :created
+      respond_with(transaction.as_json(include: {category: {only: :name},
+                                                 currency: {only: :name}}),
+                   status: :created,
+                   location: nil)
     else
       respond_with transaction, status: :unprocessable_entity
     end
