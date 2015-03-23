@@ -23,8 +23,8 @@ App.Views.TransactionForm = App.Views.Base.extend({
 
     App.Views.TransactionForm.__super__.render.apply(this, arguments);
 
-    this.$el.find('#categories-group').append(this.categories.render().el);
-    this.$el.find('#currencies-group').append(this.currencies.render().el);
+    this.$el.find('#categories-group > div').append(this.categories.render().el);
+    this.$el.find('#currencies-group > div > div').append(this.currencies.render().el);
 
     this.$el.find('.transaction_date.input-group.date').datepicker({
       todayBtn: "linked",

@@ -1,7 +1,8 @@
 App.Views.Categories = App.Views.Base.extend({
   template: HandlebarsTemplates['categories'],
 
-  initialize: function () {
+  initialize: function (attrs) {
+    this.attrs = attrs;
     App.Views.Categories.__super__.initialize.apply(this, arguments);
     this.listenTo(this.collection, 'reset', this.render);
     this.collection.fetch({reset: true});
@@ -15,6 +16,10 @@ App.Views.Categories = App.Views.Base.extend({
   },
 
   renderCategory: function (model) {
+    if (model.get('id') == this.attrs.changed_id) {
+      model.set('selected', 'selected')
+    }
+
     v = new App.Views.Category({model: model});
     this.$('#transaction_category_id').append(v.render().el);
   }

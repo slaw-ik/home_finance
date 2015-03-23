@@ -1,7 +1,8 @@
 App.Views.Currencies = App.Views.Base.extend({
   template: HandlebarsTemplates['currencies'],
 
-  initialize: function () {
+  initialize: function (attrs) {
+    this.attrs = attrs;
     App.Views.Currencies.__super__.initialize.apply(this, arguments);
     this.listenTo(this.collection, 'reset', this.render);
     this.collection.fetch({reset: true});
@@ -14,6 +15,10 @@ App.Views.Currencies = App.Views.Base.extend({
   },
 
   renderCurrency: function (model) {
+    if (model.get('id') == this.attrs.changed_id) {
+      model.set('selected', 'selected')
+    }
+
     v = new App.Views.Currency({model: model});
     this.$('#transaction_currency_id').append(v.render().el);
   }

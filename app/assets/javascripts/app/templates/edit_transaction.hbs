@@ -9,9 +9,7 @@
   </div>
 </td>
 <td>
-  <div id="edit-categories-group">
-
-  </div>
+  <div id="edit-categories-group"></div>
 </td>
 <td>
   <input class="form-control" id="transaction_title" name="transaction[title]" placeholder="Назва"
@@ -21,7 +19,9 @@
   <input class="form-control" id="transaction_amount" name="transaction[amount]" placeholder="Сума"
          type="text" value="{{amount}}">
 </td>
-<td>{{currency.name}}</td>
+<td>
+  <div id="edit-currencies-group"></div>
+</td>
 <td class="actions">
   <button id="edit-transaction" type="submit" class="btn" title="Пыдтвердити">
     <span class="glyphicon glyphicon-ok"></span>
