@@ -34,6 +34,34 @@ class TransactionsController < ApplicationController
       respond_with transaction, status: :unprocessable_entity
     end
   end
+
+  def update
+    transaction = current_user.transactions.find(params[:id])
+
+    transaction.assign_attributes(title: params[:title],
+                                  currency: Currency.find(params[:currency_id]),
+                                  category: Category.find(params[:category_id]),
+                                  amount: params[:amount].gsub(',', '.').to_f,
+                                  date: params[:date].to_date)
+    if transaction.save
+      render json: transaction.as_json(include: {category: {only: :name},
+                                                 currency: {only: :name}}),
+             status: :ok
+    else
+      respond_with transaction, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    transaction = current_user.transactions.find(params[:id])
+
+    if transaction.destroy
+      respond_with transaction, status: :success
+    else
+      respond_with transaction, status: :unprocessable_entity
+    end
+
+  end
 end
 
 private

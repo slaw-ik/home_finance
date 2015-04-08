@@ -9,12 +9,32 @@ App.Views.Transaction = App.Views.Base.extend({
 
   editTransaction: function (e) {
     e.preventDefault();
-    this.$el.replaceWith(new App.Views.EditTransaction({model: this.model}).render().el);
+    App.Vent.trigger("transaction:edit:cancel");
+    var newElement = new App.Views.EditTransaction({model: this.model}).render().el,
+      $prev = this.$el.prev(),
+      $parent = this.$el.parent();
+
+    if ($prev.length > 0) {
+      $prev.after(newElement);
+    } else {
+      $parent.prepend(newElement);
+    }
+
+    this.off();
+    this.remove();
   },
 
   deleteTransaction: function (e) {
+    var me = this;
     e.preventDefault();
-    alert(this.model.get('id'));
+    if (confirm("Видалити транзакцію?")) {
+      this.model.destroy({
+        success: function (model, response) {
+          me.off();
+          me.remove();
+        }
+      });
+    }
   }
 
 });

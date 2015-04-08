@@ -3,7 +3,7 @@ App.Views.EditTransaction = App.Views.Base.extend({
   template: HandlebarsTemplates['edit_transaction'],
   events: {
     'click #edit-transaction': 'editTransaction',
-    'click .delete-transaction': 'deleteTransaction'
+    'click .cancel-transaction': 'cancelTransaction'
   },
 
   initialize: function () {
@@ -18,6 +18,12 @@ App.Views.EditTransaction = App.Views.Base.extend({
       collection: new App.Collections.Currencies()
     });
 
+    this.listenTo(App.Vent, "transaction:edit:done", this.replaceTransaction);
+    this.listenTo(App.Vent, "transaction:edit:cancel", this.replaceTransaction);
+
+    this.listenTo(this.model, 'invalid', this.renderEditValidationError);
+
+    //$(document).on('keyup', _.bind(this.onKeyup, this));
   },
 
   render: function () {
@@ -49,12 +55,64 @@ App.Views.EditTransaction = App.Views.Base.extend({
     });
     this.model.save({}, {
         success: function (model) {
-          //App.Vent.trigger("transaction:create", model)
+          App.Vent.trigger("transaction:edit:done", model)
         },
         error: function (model) {
           //App.Vent.trigger("transaction:SavingError", model)
         }
       }
     )
-  }
+  },
+
+  cancelTransaction: function (e) {
+    e.preventDefault();
+    App.Vent.trigger("transaction:edit:cancel");
+    //this.off();
+    //this.remove();
+  },
+
+  onKeyup: function (e) {
+    if (e.keyCode == 27) {
+      this.cancelTransaction(e);
+    }
+  },
+
+  remove: function () {
+    $(document).off('keyup');
+    Backbone.View.prototype.remove.call(this);
+  },
+
+  replaceTransaction: function () {
+    var newElement = new App.Views.Transaction({model: this.model}).render().el,
+      $prev = this.$el.prev(),
+      $parent = this.$el.parent();
+
+    if ($prev.length > 0) {
+      $prev.after(newElement);
+    } else {
+      $parent.prepend(newElement);
+    }
+
+    this.off();
+    this.remove();
+  },
+
+  renderEditValidationError: function (model) {
+    debugger;
+    _.each(_.keys(model.validationError), function (key) {
+      var cross = (key == 'date') ? '' : '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>'
+      $('input#transaction_' + key)
+        .attr('aria-describedby', 'inputError2' + key)
+        .after(cross)
+        .after('<span id="inputError2Status" class="sr-only">(error)</span>')
+        .closest('.form-group')
+        .addClass('has-error has-feedback');
+
+      $('select#transaction_' + key)
+        .closest('.form-group')
+        .addClass('has-error');
+    })
+  },
+
+
 });
