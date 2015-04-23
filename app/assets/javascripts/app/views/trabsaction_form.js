@@ -40,16 +40,17 @@ App.Views.TransactionForm = App.Views.Base.extend({
   },
 
   renderValidationError: function (model) {
+    var me = this;
     _.each(_.keys(model.validationError), function (key) {
       var cross = (key == 'date') ? '' : '<span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>'
-      $('input#transaction_' + key)
+      me.$('input#transaction_' + key)
         .attr('aria-describedby', 'inputError2' + key)
         .after(cross)
         .after('<span id="inputError2Status" class="sr-only">(error)</span>')
         .closest('.form-group')
         .addClass('has-error has-feedback');
 
-      $('select#transaction_' + key)
+      me.$('select#transaction_' + key)
         .closest('.form-group')
         .addClass('has-error');
     })

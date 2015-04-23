@@ -1,32 +1,42 @@
 <td></td>
 <td>
-  <div class="transaction_date input-group date">
-    <input value="{{formatDate date 'D MMM. YYYY'}}" placeholder="Дата" id="transaction_date" type="text"
-           class="form-control">
+  <div class="form-group">
+    <div class="transaction_date input-group date">
+      <input value="{{formatDate date 'D MMM. YYYY'}}" placeholder="Дата" id="transaction_date" type="text"
+             class="form-control">
             <span class="input-group-addon">
               <i class="glyphicon glyphicon-calendar"></i>
             </span>
+    </div>
   </div>
 </td>
 <td>
-  <div id="edit-categories-group"></div>
+  <div class="form-group">
+    <div id="edit-categories-group"></div>
+  </div>
 </td>
 <td>
-  <input class="form-control" id="transaction_title" name="transaction[title]" placeholder="Назва"
-         type="text" value="{{title}}">
+  <div class="form-group">
+    <input class="form-control" id="transaction_title" name="transaction[title]" placeholder="Назва"
+           type="text" value="{{title}}">
+  </div>
 </td>
 <td>
-  <input class="form-control" id="transaction_amount" name="transaction[amount]" placeholder="Сума"
-         type="text" value="{{amount}}">
+  <div class="form-group">
+    <input class="form-control" id="transaction_amount" name="transaction[amount]" placeholder="Сума"
+           type="text" value="{{amount}}">
+  </div>
 </td>
 <td>
-  <div id="edit-currencies-group"></div>
+  <div class="form-group">
+    <div id="edit-currencies-group"></div>
+  </div>
 </td>
 <td class="actions">
-  <button id="edit-transaction" type="submit" class="btn" title="Пыдтвердити">
+  <button id="edit-transaction" type="submit" class="btn" title="Підтвердити">
     <span class="glyphicon glyphicon-ok"></span>
   </button>
-  <a class="btn btn-default cancel-transaction" href="#" role="button" title="Видалити запис">
+  <a class="btn btn-default cancel-transaction" href="#" role="button" title="Відмінити">
     <span class="glyphicon glyphicon-remove"></span>
   </a>
 </td>

@@ -10,7 +10,7 @@ App.Views.Transaction = App.Views.Base.extend({
   editTransaction: function (e) {
     e.preventDefault();
     App.Vent.trigger("transaction:edit:cancel");
-    var newElement = new App.Views.EditTransaction({model: this.model}).render().el,
+    var newElement = new App.Views.EditTransaction({model: this.model, old_model: this.model.clone()}).render().el,
       $prev = this.$el.prev(),
       $parent = this.$el.parent();
 
