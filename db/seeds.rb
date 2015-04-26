@@ -6,8 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(email: 'admin@admin.com', password: '123456789', password_confirmation: '123456789')
-
 #Populate currencies
 Currency.create!([
                      {code: 'EUR', name: "Euro"},
@@ -38,3 +36,6 @@ Category.create!([
                      {user_id: 1, name: 'Зарплата Мирослав', transaction_type_id: 2},
                      {user_id: 1, name: 'Зарплата Юля', transaction_type_id: 2}
                  ])
+
+user = User.create!(email: 'admin@admin.com', password: '123456789', password_confirmation: '123456789')
+Setting.create!(user: user, default_currency_id: Currency.first.id)

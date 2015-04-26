@@ -10,7 +10,7 @@ namespace :db do
       transaction.user_id = User.first.id
       transaction.transaction_type_id = TransactionType.first.id..TransactionType.last.id
       transaction.currency_id = User.first.setting.default_currency_id
-      transaction.category_id = Category.first.id..Category.last.id
+      transaction.category_id = Category.where(transaction_type_id: transaction.transaction_type_id).first.id..Category.where(transaction_type_id: transaction.transaction_type_id).last.id
       transaction.title = Populator.words(1..3)
 
       if TransactionType.find(transaction.transaction_type_id).name == 'debet'
