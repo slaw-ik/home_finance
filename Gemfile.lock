@@ -45,6 +45,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.2.1)
+    faker (1.4.3)
+      i18n (~> 0.5)
     handlebars_assets (0.18)
       execjs (>= 1.2.9)
       multi_json
@@ -68,6 +70,7 @@ GEM
     orm_adapter (0.5.0)
     pg (0.17.1)
     polyglot (0.3.5)
+    populator (1.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -130,10 +133,12 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   devise
+  faker
   handlebars_assets
   jbuilder (~> 2.0)
   jquery-rails
   pg
+  populator
   rails (= 4.1.4)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
