@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :categories
   has_many :transactions
   has_one :setting
+  has_many :sums
 
   accepts_nested_attributes_for :balance_states
   accepts_nested_attributes_for :categories

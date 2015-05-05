@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426154344) do
+ActiveRecord::Schema.define(version: 20150502164549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,13 @@ ActiveRecord::Schema.define(version: 20150426154344) do
     t.datetime "updated_at"
   end
 
+  create_table "interval_types", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "settings", force: true do |t|
     t.integer  "user_id"
     t.integer  "default_currency_id"
@@ -54,13 +61,21 @@ ActiveRecord::Schema.define(version: 20150426154344) do
     t.datetime "updated_at"
   end
 
+  create_table "sum_types", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "sums", force: true do |t|
     t.integer  "parent_id"
     t.integer  "user_id"
-    t.string   "type"
+    t.integer  "interval_type_id"
+    t.integer  "sum_type_id"
     t.string   "date_range"
     t.string   "uid"
-    t.float    "value",      default: 0.0
+    t.float    "value",            default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
   end

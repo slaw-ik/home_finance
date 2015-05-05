@@ -1,47 +1,47 @@
 class Sum < ActiveRecord::Base
+  belongs_to :user
+  belongs_to :sum_type
+  belongs_to :interval_type
 
   class << self
-    def add(value, date, user_id)
-      juid = generate_year_uid(date)
-      year_sum = find_or_create_by(uid: juid[:uid])
-      year_sum.value += value
-      year_sum.user_id = user_id
-      year_sum.type = 'Y'
-      year_sum.user_id = user_id
-      year_sum.date_range = juid[:range]
+    def add(value, transaction_type_id, date, user_id)
+
+      transaction_type = TransactionType.find(transaction_type_id)
+
+      if transaction_type.name == 'debet'
+        generate_sums_for_transaction(date, SumType.find_by_name('D'), user_id, value)
+        # generate_sums_for_transaction(date, SumType.find_by_name('B'), user_id, -value)
+      elsif transaction_type.name == 'credit'
+        generate_sums_for_transaction(date, SumType.find_by_name('C'), user_id, value)
+        # generate_sums_for_transaction(date, SumType.find_by_name('B'), user_id, value)
+      end
+    end
+
+    def generate_sums_for_transaction(date, sum_type, user_id, value)
+      year_sum = create_or_update_sum(value, 'Y', sum_type, date, user_id)
 
       if year_sum.save
-        muid = generate_month_uid(date)
-        month_sum = find_or_create_by(uid: muid[:uid])
-        month_sum.value += value
-        month_sum.parent_id = year_sum.id
-        month_sum.user_id = user_id
-        month_sum.date_range = muid[:range]
-        month_sum.type = 'M'
+        month_sum = create_or_update_sum(value, 'M', sum_type, date, user_id, year_sum)
 
         if month_sum.save
-          duid = generate_day_uid(date)
-          day_sum = find_or_create_by(uid: duid[:uid])
-          day_sum.value += value
-          day_sum.parent_id = month_sum.id
-          day_sum.user_id = user_id
-          day_sum.date_range = duid[:range]
-          day_sum.type = 'D'
+          day_sum = create_or_update_sum(value, 'D', sum_type, date, user_id, month_sum)
           day_sum.save
         end
       end
     end
 
-    def generate_day_uid(date)
-      generate_uid('D', date)
-    end
+    def create_or_update_sum(value, type, sum_type, date, user_id, parent=nil)
 
-    def generate_month_uid(date)
-      generate_uid('M', date)
-    end
-
-    def generate_year_uid(date)
-      generate_uid('Y', date)
+      uid = generate_uid(type, date)
+      sum = find_or_create_by(uid: uid[:uid], sum_type: sum_type)
+      sum.assign_attributes({
+                                user_id: user_id,
+                                interval_type: IntervalType.find_by_name(type),
+                                sum_type: sum_type,
+                                date_range: uid[:range],
+                                parent_id: parent && parent.id})
+      sum.value += value
+      sum
     end
 
     def generate_uid(s, date)

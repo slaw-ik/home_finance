@@ -19,6 +19,20 @@ TransactionType.create!([
                             {id: 2, name: 'credit'}
                         ])
 
+#Populate Interval types
+IntervalType.create!([
+                            {id: 1, name: 'Y', description: 'Year'},
+                            {id: 2, name: 'M', description: 'Month'},
+                            {id: 3, name: 'D', description: 'Day'}
+                        ])
+
+#Populate Sum types
+SumType.create!([
+                            {id: 1, name: 'D', description: 'Debet'},
+                            {id: 2, name: 'C', description: 'Credit'},
+                            {id: 3, name: 'B', description: 'Bucket state'}
+                        ])
+
 #Populate categories
 Category.create!([
                      {user_id: 1, name: 'Квартира', transaction_type_id: 1},

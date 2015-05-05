@@ -20,7 +20,7 @@ class Transaction < ActiveRecord::Base
   def add_sum
     puts "=============================================="
     self.inspect
-    Sum.add(self.amount, self.date, self.user_id)
+    Sum.add(self.amount, self.transaction_type_id, self.date, self.user_id)
   end
 
 end

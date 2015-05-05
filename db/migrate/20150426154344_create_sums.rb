@@ -3,7 +3,8 @@ class CreateSums < ActiveRecord::Migration
     create_table :sums do |t|
       t.integer :parent_id
       t.integer :user_id
-      t.string :type
+      t.integer :interval_type_id
+      t.integer :sum_type_id
       t.string :date_range
       t.string :uid
       t.float :value, default: 0
