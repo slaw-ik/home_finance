@@ -9,7 +9,7 @@ App.Routers.MainRouter = Backbone.Router.extend({
   },
 
   index: function () {
-    console.log("Root Path");
+    this.contentView.swapMain(new App.Views.DashboardPage());
   },
 
   newTransaction: function () {

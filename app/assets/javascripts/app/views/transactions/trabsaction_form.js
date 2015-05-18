@@ -1,5 +1,5 @@
 App.Views.TransactionForm = App.Views.Base.extend({
-  template: HandlebarsTemplates['transaction_form'],
+  template: HandlebarsTemplates['transactions/transaction_form'],
 
   events: {
     "click button#add-transaction": "addTransaction",

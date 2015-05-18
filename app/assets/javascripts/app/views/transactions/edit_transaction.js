@@ -1,6 +1,6 @@
 App.Views.EditTransaction = App.Views.Base.extend({
   tagName: 'tr',
-  template: HandlebarsTemplates['edit_transaction'],
+  template: HandlebarsTemplates['transactions/edit_transaction'],
   events: {
     'click #edit-transaction': 'editTransaction',
     'click .cancel-transaction': 'cancelTransaction'

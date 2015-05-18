@@ -1,5 +1,5 @@
 App.Views.Currencies = App.Views.Base.extend({
-  template: HandlebarsTemplates['currencies'],
+  template: HandlebarsTemplates['transactions/currencies'],
 
   initialize: function (attrs) {
     this.attrs = attrs;

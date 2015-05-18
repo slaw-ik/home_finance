@@ -1,5 +1,5 @@
 App.Views.Categories = App.Views.Base.extend({
-  template: HandlebarsTemplates['categories'],
+  template: HandlebarsTemplates['transactions/categories'],
 
   initialize: function (attrs) {
     this.attrs = attrs;
