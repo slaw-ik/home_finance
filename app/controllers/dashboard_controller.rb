@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
-  def index
+  def report
+    render json: {}
   end
 end

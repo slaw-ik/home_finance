@@ -22,5 +22,10 @@ App.Views.Base = Backbone.View.extend({
     var model = this.model.toJSON && this.model.toJSON() || this.model;
     this.$el.html(this.template(model));
     return this;
+  },
+
+  renderNested: function( view, selector ) {
+    var $element = ( selector instanceof $ ) ? selector : this.$( selector );
+    view.setElement( $element ).render();
   }
 });

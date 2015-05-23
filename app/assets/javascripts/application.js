@@ -22,5 +22,6 @@
 //= require ./lib/sorts/tablesort.date
 //= require bootstrap.min
 //= require ./lib/bootstrap-datepicker
+//= require ./lib/chart.min
 //= require_directory ./lib/locales
 //= require ./app/home_finance

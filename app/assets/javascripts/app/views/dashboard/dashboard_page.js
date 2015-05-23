@@ -7,12 +7,17 @@ App.Views.DashboardPage = App.Views.Base.extend({
   },
 
   render: function () {
+    var me = this;
     App.Views.DashboardPage.__super__.render.apply(this, arguments);
 
-    //this.model = new App.Models.Transaction({type: params.type});
-    var chart = new App.Views.Chart();
+    var charts = [
+      new App.Views.CircleDebetChart(),
+      new App.Views.Chart()
+    ];
 
-    this.$el.find('#chart_section').html(chart.render().el);
+    _.each(charts, function (chart) {
+      me.$el.find('#chart_section').append(chart.render().el);
+    });
 
     return this;
   }

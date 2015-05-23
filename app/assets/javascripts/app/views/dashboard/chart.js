@@ -1,5 +1,5 @@
 App.Views.Chart = App.Views.Base.extend({
-  template: HandlebarsTemplates['dashboard/chart']
-
+  className: 'chart',
+  template: HandlebarsTemplates['dashboard/chart'],
 
 });

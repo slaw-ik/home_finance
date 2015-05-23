@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :transactions
   resources :categories
   resources :currencies
+
+  get 'report' => 'dashboard#report'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
