@@ -5,7 +5,7 @@ App.Views.CircleDebetChart = App.Views.Chart.extend({
 
     var year = moment().year(),
       month = moment().month(),
-      dateFrom = moment([year, month - 1]),
+      dateFrom = moment([year, month]),
       dateTo = moment(dateFrom).endOf('month');
 
     this.model = new App.Models.Report({
