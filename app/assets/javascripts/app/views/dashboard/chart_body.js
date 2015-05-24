@@ -1,18 +1,11 @@
 App.Views.ChartBody = App.Views.Base.extend({
   template: HandlebarsTemplates['dashboard/chart_body'],
 
-  initialize: function () {
-    this.listenTo(this.model, 'sync', this._onModelReset);
-  },
-
-  _onModelReset: function () {
-    var chart = c3.generate({
+  drawChart: function () {
+    this.chart = c3.generate({
       bindto: this.$el.find("#myChart").get(0),
       data: {
-        columns: [
-          ['data1', 250],
-          ['data2', 25]
-        ],
+        columns: this.model.get('columns'),
         type: 'donut',
         onclick: function (d, element) {
           return false
@@ -26,26 +19,18 @@ App.Views.ChartBody = App.Views.Base.extend({
               });
           }
         },
-        title: "Total: € 275.00"
+        width: 70,
+        title: "Total: € " + this.model.get('total')
       },
       legend: {
         item: {
           onclick: function (id) {
             return false;
           }
-        }
+        },
+        position: 'right'
       }
     });
-  },
-
-  //render: function () {
-  //
-  //
-  //  App.Views.ChartBody.__super__.render.apply(this, arguments);
-  //
-  //
-  //  return this
-  //}
-
+  }
 
 });

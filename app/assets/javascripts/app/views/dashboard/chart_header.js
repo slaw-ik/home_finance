@@ -6,6 +6,7 @@ App.Views.ChartHeader = App.Views.Base.extend({
   },
 
   render: function () {
+    var me = this, fired = false;
     App.Views.ChartHeader.__super__.render.apply(this, arguments);
 
     this.$el.find('.input-daterange.input-group').datepicker({
@@ -14,7 +15,15 @@ App.Views.ChartHeader = App.Views.Base.extend({
       autoclose: true,
       todayHighlight: true,
       format: 'd M. yyyy'
-    })
+    }).on('changeDate', function (e) {
+      if (!fired) {
+        var key = e.target.attributes['data-attr'].value,
+          val = moment(e.date);
+        me.model.set(key, val);
+        App.Vent.trigger("model:changed", me.model);
+      }
+      fired = !fired;
+    });
   }
 
 });

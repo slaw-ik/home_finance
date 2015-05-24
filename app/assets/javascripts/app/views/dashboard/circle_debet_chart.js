@@ -3,7 +3,8 @@ App.Views.CircleDebetChart = App.Views.Chart.extend({
   initialize: function () {
     App.Views.CircleDebetChart.__super__.initialize.apply(this, arguments);
 
-    var year = moment().year(),
+    var me = this,
+      year = moment().year(),
       month = moment().month(),
       dateFrom = moment([year, month]),
       dateTo = moment(dateFrom).endOf('month');
@@ -19,25 +20,27 @@ App.Views.CircleDebetChart = App.Views.Chart.extend({
     this._header = new App.Views.ChartHeader({model: this.model});
     this._body = new App.Views.ChartBody({model: this.model});
 
-    this.listenTo(this.model, 'sync', this._onModelReset);
+    this.listenTo(App.Vent, "model:changed", function (model) {
+      model.fetch({
+        reset: true,
+        data: {
+          type: model.get('type'),
+          dateFrom: model.get('dateFrom').format('DD/MM/YYYY'),
+          dateTo: model.get('dateTo').format('DD/MM/YYYY')
+        },
+        success: function () {
+          me._body.drawChart();
+        }
+      });
+    });
   },
 
   render: function () {
     App.Views.CircleDebetChart.__super__.render.apply(this, arguments);
     this.renderNested(this._header, '.chart_header');
     this.renderNested(this._body, '.chart_body');
-    this.model.fetch({
-      data: {
-        type: this.model.get('type'),
-        dateFrom: this.model.get('dateFrom').format('DD/MM/YYYY'),
-        dateTo: this.model.get('dateTo').format('DD/MM/YYYY')
-      }
-    });
+    App.Vent.trigger("model:changed", this.model);
     return this;
-  },
-
-  _onModelReset: function () {
-
   }
 })
 ;
