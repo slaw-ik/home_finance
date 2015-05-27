@@ -12,7 +12,7 @@ App.Views.DashboardPage = App.Views.Base.extend({
 
     var charts = [
       new App.Views.CircleDebetChart(),
-      new App.Views.LineTendencyChart()
+//      new App.Views.LineTendencyChart()
     ];
 
     _.each(charts, function (chart) {

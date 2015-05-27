@@ -19,6 +19,7 @@ App.Views.CircleDebetChart = App.Views.Chart.extend({
     this._header = new App.Views.ChartHeader({model: this.model});
     this._body = new App.Views.ChartBody({model: this.model});
 
-    this.model.on('changed', this._onModelChanged, this);
+//    this.model.on('change:dateTo change:dateFrom', this._onModelChanged, this);
+    this.listenTo(this.model, 'change:dateTo change:dateFrom', this._onModelChanged);
   }
 });

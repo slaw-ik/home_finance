@@ -15,8 +15,8 @@ App.Views.ChartBody = App.Views.Base.extend({
         label: {
           format: function (value, ratio, id) {
             return '€ ' + value.toFixed(2).replace(/./g, function (c, i, a) {
-                return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-              });
+              return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
+            });
           }
         },
         width: 70,
