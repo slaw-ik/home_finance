@@ -16,11 +16,10 @@ App.Views.LineTendencyChart = App.Views.Chart.extend({
       viewId: 'my2'
     });
 
-//    this.model.on('changed', this._onModelChanged, this);
-    this.listenTo(this.model, 'change:dateTo change:dateFrom', this._onModelChanged);
-
     this._header = new App.Views.ChartHeader({model: this.model});
     this._body = new App.Views.ChartBody({model: this.model});
+
+    this.listenTo(this._header, 'changed', this._onModelChanged);
   }
 })
 ;

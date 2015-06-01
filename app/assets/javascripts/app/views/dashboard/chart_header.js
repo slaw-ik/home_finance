@@ -17,8 +17,7 @@ App.Views.ChartHeader = App.Views.Base.extend({
         var key = e.target.attributes['data-attr'].value,
           val = moment(e.date);
         me.model.set(key, val);
-//        debugger;
-//        me.model.trigger('changed', me.model);
+        me.trigger('changed', me.model);
       }
       fired = !fired;
     });

@@ -22,7 +22,6 @@ App.Views.Chart = App.Views.Base.extend({
     this.renderNested(this._header, '.chart_header');
     this.renderNested(this._body, '.chart_body');
     this._onModelChanged(this.model);
-//    this.model.trigger('changed', this.model);
     return this;
   }
 
