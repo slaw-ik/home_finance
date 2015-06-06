@@ -3,10 +3,17 @@ App.Views.LineTendencyChart = App.Views.Chart.extend({
   initialize: function () {
     App.Views.LineTendencyChart.__super__.initialize.apply(this, arguments);
 
+    //var year = moment().year(),
+    //  month = moment().month(),
+    //  dateFrom = moment([year]),
+    //  dateTo = moment(dateFrom).endOf('year');
+
+
     var year = moment().year(),
       month = moment().month(),
-      dateFrom = moment([year]),
-      dateTo = moment(dateFrom).endOf('year');
+      dateFrom = moment([year, month-1]),
+      dateTo = moment(dateFrom).endOf('month');
+
 
     this.model = new App.Models.Report({
       type: 'tendency',

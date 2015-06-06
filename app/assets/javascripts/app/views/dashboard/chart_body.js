@@ -3,6 +3,7 @@ App.Views.ChartBody = App.Views.Base.extend({
 
   drawChart: function () {
     var bindto = this.$el.find("#myChart").get(0);
+    debugger;
     switch (this.model.get('type')) {
       case 'debet':
         this.chart = c3.generate({
@@ -39,7 +40,16 @@ App.Views.ChartBody = App.Views.Base.extend({
         this.chart = c3.generate({
           bindto: bindto,
           data: {
+            x: 'x',
             columns: this.model.get('columns')
+          },
+          axis: {
+            x: {
+              type: 'timeseries',
+              tick: {
+                format: '%d-%m-%Y'
+              }
+            }
           }
         });
         break;

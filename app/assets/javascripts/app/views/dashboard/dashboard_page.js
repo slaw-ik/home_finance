@@ -11,7 +11,7 @@ App.Views.DashboardPage = App.Views.Base.extend({
     App.Views.DashboardPage.__super__.render.apply(this, arguments);
 
     var charts = [
-      new App.Views.CircleDebetChart(),
+      //new App.Views.CircleDebetChart(),
       new App.Views.LineTendencyChart()
     ];
 
