@@ -3,7 +3,7 @@ App.Views.ChartBody = App.Views.Base.extend({
 
   drawChart: function () {
     var bindto = this.$el.find("#myChart").get(0);
-    debugger;
+
     switch (this.model.get('type')) {
       case 'debet':
         this.chart = c3.generate({
@@ -40,8 +40,59 @@ App.Views.ChartBody = App.Views.Base.extend({
         this.chart = c3.generate({
           bindto: bindto,
           data: {
-            x: 'x',
+            xs: {
+              'Debet': 'debet_dates',
+              'Credit': 'credit_dates'
+            },
             columns: this.model.get('columns')
+          },
+          axis: {
+            x: {
+              type: 'timeseries',
+              tick: {
+                format: '%d-%m-%Y'
+              }
+            }
+          }
+        });
+        break;
+      case 'bar':
+        this.chart = c3.generate({
+          bindto: bindto,
+          data: {
+            xs: {
+              'Debet': 'debet_dates',
+              'Credit': 'credit_dates'
+            },
+            columns: this.model.get('columns'),
+            type: 'bar'
+          },
+          bar: {
+            width: {
+              ratio: 0.5 // this makes bar width 50% of length between ticks
+            }
+            // or
+            //width: 100 // this makes bar width 100px
+          },
+          axis: {
+            x: {
+              type: 'timeseries',
+              tick: {
+                format: '%d-%m-%Y'
+              }
+            }
+          }
+        });
+        break;
+      case 'bucket':
+        this.chart = c3.generate({
+          bindto: bindto,
+          data: {
+            xs: {
+              'Bucket state': 'debet_dates'
+            },
+            columns: this.model.get('columns'),
+            type: 'area'
           },
           axis: {
             x: {
