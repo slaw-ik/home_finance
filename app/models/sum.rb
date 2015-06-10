@@ -3,6 +3,48 @@ class Sum < ActiveRecord::Base
   belongs_to :sum_type
   belongs_to :interval_type
 
+  scope :month_debets, -> (date_from, date_to) {
+    select(:value, :date_from)
+    .where(:interval_type_id => 2, :sum_type_id => 1)
+    .where("date_from >= '#{date_from}'")
+    .where("date_to <= '#{date_to}'")
+  }
+
+  scope :day_debets, -> (date_from, date_to) {
+    select(:value, :date_from)
+    .where(:interval_type_id => 3, :sum_type_id => 1)
+    .where("date_from >= '#{date_from}'")
+    .where("date_to <= '#{date_to}'")
+  }
+
+  scope :month_credits, -> (date_from, date_to) {
+    select(:value, :date_from)
+    .where(:interval_type_id => 2, :sum_type_id => 2)
+    .where("date_from >= '#{date_from}'")
+    .where("date_to <= '#{date_to}'")
+  }
+
+  scope :day_credits, -> (date_from, date_to) {
+    select(:value, :date_from)
+    .where(:interval_type_id => 3, :sum_type_id => 2)
+    .where("date_from >= '#{date_from}'")
+    .where("date_to <= '#{date_to}'")
+  }
+
+  scope :month_bucket_sates, -> (date_from, date_to){
+    select(:value, :date_from)
+    .where(:interval_type_id => 2, :sum_type_id => 3)
+    .where("date_from >= '#{date_from}'")
+    .where("date_to <= '#{date_to}'")
+  }
+
+  scope :day_bucket_sates, -> (date_from, date_to){
+    select(:value, :date_from)
+    .where(:interval_type_id => 3, :sum_type_id => 3)
+    .where("date_from >= '#{date_from}'")
+    .where("date_to <= '#{date_to}'")
+  }
+
   class << self
     def add(value, transaction_type_id, date, user_id)
 
