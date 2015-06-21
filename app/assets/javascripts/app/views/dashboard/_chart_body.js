@@ -84,7 +84,7 @@ App.Views.ChartBody = App.Views.Base.extend({
           }
         });
         break;
-      case 'bucket':
+      case 'bucket_state':
         this.chart = c3.generate({
           bindto: bindto,
           data: {

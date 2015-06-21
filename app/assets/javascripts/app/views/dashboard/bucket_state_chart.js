@@ -8,7 +8,7 @@ App.Views.BucketStateChart = App.Views.Chart.extend({
       dateTo = moment(dateFrom).endOf('year');
 
     this.model = new App.Models.Report({
-      type: 'bucket',
+      type: 'bucket_state',
       dateFrom: dateFrom,
       dateTo: dateTo,
       title: 'Стан гаманця',

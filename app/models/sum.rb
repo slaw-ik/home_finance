@@ -5,47 +5,59 @@ class Sum < ActiveRecord::Base
 
   scope :month_debets, -> (date_from, date_to) {
     select(:value, :date_from)
-    .where(:interval_type_id => 2, :sum_type_id => 1)
-    .where("date_from >= '#{date_from}'")
-    .where("date_to <= '#{date_to}'")
+        .where(:interval_type_id => 2, :sum_type_id => 1)
+        .where("date_from >= '#{date_from}'")
+        .where("date_to <= '#{date_to}'")
   }
 
   scope :day_debets, -> (date_from, date_to) {
     select(:value, :date_from)
-    .where(:interval_type_id => 3, :sum_type_id => 1)
-    .where("date_from >= '#{date_from}'")
-    .where("date_to <= '#{date_to}'")
+        .where(:interval_type_id => 3, :sum_type_id => 1)
+        .where("date_from >= '#{date_from}'")
+        .where("date_to <= '#{date_to}'")
   }
 
   scope :month_credits, -> (date_from, date_to) {
     select(:value, :date_from)
-    .where(:interval_type_id => 2, :sum_type_id => 2)
-    .where("date_from >= '#{date_from}'")
-    .where("date_to <= '#{date_to}'")
+        .where(:interval_type_id => 2, :sum_type_id => 2)
+        .where("date_from >= '#{date_from}'")
+        .where("date_to <= '#{date_to}'")
   }
 
   scope :day_credits, -> (date_from, date_to) {
     select(:value, :date_from)
-    .where(:interval_type_id => 3, :sum_type_id => 2)
-    .where("date_from >= '#{date_from}'")
-    .where("date_to <= '#{date_to}'")
+        .where(:interval_type_id => 3, :sum_type_id => 2)
+        .where("date_from >= '#{date_from}'")
+        .where("date_to <= '#{date_to}'")
   }
 
-  scope :month_bucket_sates, -> (date_from, date_to){
+  scope :month_bucket_sates, -> (date_from, date_to) {
     select(:value, :date_from)
-    .where(:interval_type_id => 2, :sum_type_id => 3)
-    .where("date_from >= '#{date_from}'")
-    .where("date_to <= '#{date_to}'")
+        .where(:interval_type_id => 2, :sum_type_id => 3)
+        .where("date_from >= '#{date_from}'")
+        .where("date_to <= '#{date_to}'")
   }
 
-  scope :day_bucket_sates, -> (date_from, date_to){
+  scope :day_bucket_sates, -> (date_from, date_to) {
     select(:value, :date_from)
-    .where(:interval_type_id => 3, :sum_type_id => 3)
-    .where("date_from >= '#{date_from}'")
-    .where("date_to <= '#{date_to}'")
+        .where(:interval_type_id => 3, :sum_type_id => 3)
+        .where("date_from >= '#{date_from}'")
+        .where("date_to <= '#{date_to}'")
   }
 
   class << self
+    def get_tendency(date_from, date_to)
+      if (date_to.to_date-date_from.to_date) > 60
+        debet_sums = Sum.month_debets(date_from, date_to)
+        credit_sums = Sum.month_credits(date_from, date_to)
+      else
+        debet_sums = Sum.day_debets(date_from, date_to)
+        credit_sums = Sum.day_credits(date_from, date_to)
+      end
+
+      {debet_sums: debet_sums, credit_sums: credit_sums}
+    end
+
     def add(value, transaction_type_id, date, user_id)
 
       transaction_type = TransactionType.find(transaction_type_id)
