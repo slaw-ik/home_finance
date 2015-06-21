@@ -27,4 +27,21 @@ namespace :db do
       transaction.updated_at = date
     end
   end
+
+  task :from_file => :environment do
+    require 'csv'
+
+    csv_text = File.read('public/hf.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+
+    result = {}
+    moths = {"янв." => '01', "февр." => '02', "марта" => '03', "апр." => '04', "мая" => '05', "июня" => '06', "июля" => '07', "авг." => '08', "сент." => '09', "окт." => '10', "нояб." => '11', "дек." => '12'}
+
+    csv.each do |row|
+      date_str = row.to_hash.values[0].split('-')
+      date_str[1] = moths[date_str[1]]
+      result[:date] = date_str.join('.')
+    end
+
+  end
 end
