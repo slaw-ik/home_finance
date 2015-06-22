@@ -21,17 +21,17 @@ TransactionType.create!([
 
 #Populate Interval types
 IntervalType.create!([
-                            {id: 1, name: 'Y', description: 'Year'},
-                            {id: 2, name: 'M', description: 'Month'},
-                            {id: 3, name: 'D', description: 'Day'}
-                        ])
+                         {id: 1, name: 'Y', description: 'Year'},
+                         {id: 2, name: 'M', description: 'Month'},
+                         {id: 3, name: 'D', description: 'Day'}
+                     ])
 
 #Populate Sum types
 SumType.create!([
-                            {id: 1, name: 'D', description: 'Debet'},
-                            {id: 2, name: 'C', description: 'Credit'},
-                            {id: 3, name: 'B', description: 'Bucket state'}
-                        ])
+                    {id: 1, name: 'D', description: 'Debet'},
+                    {id: 2, name: 'C', description: 'Credit'},
+                    {id: 3, name: 'B', description: 'Bucket state'}
+                ])
 
 #Populate categories
 Category.create!([
@@ -47,6 +47,7 @@ Category.create!([
                      {user_id: 1, name: 'Подарунки і дні народження', transaction_type_id: 1},
                      {user_id: 1, name: 'Автомобіль', transaction_type_id: 1},
                      {user_id: 1, name: 'Інше', transaction_type_id: 1},
+                     {user_id: 1, name: 'Навчання', transaction_type_id: 1},
                      {user_id: 1, name: 'Зарплата Мирослав', transaction_type_id: 2},
                      {user_id: 1, name: 'Зарплата Юля', transaction_type_id: 2}
                  ])

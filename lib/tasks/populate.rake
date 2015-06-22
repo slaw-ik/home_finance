@@ -38,9 +38,40 @@ namespace :db do
     moths = {"янв." => '01', "февр." => '02', "марта" => '03', "апр." => '04', "мая" => '05', "июня" => '06', "июля" => '07', "авг." => '08', "сент." => '09', "окт." => '10', "нояб." => '11', "дек." => '12'}
 
     csv.each do |row|
-      date_str = row.to_hash.values[0].split('-')
+      values = row.to_hash.values
+      date_str = values[0].split('-')
       date_str[1] = moths[date_str[1]]
-      result[:date] = date_str.join('.')
+      date = date_str.join('.')
+      user_id = User.first.id
+      currency_id = User.first.setting.default_currency_id
+      (3..27).to_a.select.each_with_index { |str, i| i.even? }.each do |i|
+        transaction = {
+            :user_id => user_id,
+            :transaction_type_id => 1,
+            :currency_id => currency_id,
+            :category_id => (i-1)/2,
+            :title => values[i-1],
+            :amount => values[i] ? values[i].gsub(',', '.').to_f : nil,
+            :date => date}
+        if transaction[:title].present? && transaction[:amount].present?
+          Transaction.create!(transaction)
+          puts transaction.inspect
+        end
+      end
+
+      if values[29]
+        transaction = {
+            :user_id => user_id,
+            :transaction_type_id => 2,
+            :currency_id => currency_id,
+            :category_id => 14,
+            :title => 'Зарплата сумарна',
+            :amount => values[29].to_f,
+            :date => date}
+        Transaction.create!(transaction)
+      end
+
+
     end
 
   end
