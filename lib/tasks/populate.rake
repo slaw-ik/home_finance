@@ -51,7 +51,7 @@ namespace :db do
             :currency_id => currency_id,
             :category_id => (i-1)/2,
             :title => values[i-1],
-            :amount => values[i] ? values[i].gsub(',', '.').to_f : nil,
+            :amount => values[i] ? values[i].gsub(/[^0-9\,\.\-]/, '').gsub(',', '.').to_f : nil,
             :date => date}
         if transaction[:title].present? && transaction[:amount].present?
           Transaction.create!(transaction)
@@ -66,7 +66,7 @@ namespace :db do
             :currency_id => currency_id,
             :category_id => 14,
             :title => 'Зарплата сумарна',
-            :amount => values[29].to_f,
+            :amount => values[29].gsub(/[^0-9\,\.\-]/, '').gsub(',', '.').to_f,
             :date => date}
         Transaction.create!(transaction)
       end
