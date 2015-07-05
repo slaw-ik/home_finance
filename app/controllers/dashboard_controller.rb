@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
           sum +=trans.sum_amount
           [trans.category.name, trans.sum_amount]
         }
-        result ={columns: transactions, total: sum}
+        result ={columns: transactions, total: sum.round(2)}
       when 'tendency'
         tendency = Sum.get_tendency(date_from, date_to)
 

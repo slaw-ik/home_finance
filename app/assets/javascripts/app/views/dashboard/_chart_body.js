@@ -23,7 +23,7 @@ App.Views.ChartBody = App.Views.Base.extend({
                   });
               }
             },
-            width: 70,
+            width: 90,
             title: "Total: € " + this.model.get('total')
           },
           legend: {
@@ -44,7 +44,11 @@ App.Views.ChartBody = App.Views.Base.extend({
               'Debet': 'debet_dates',
               'Credit': 'credit_dates'
             },
-            columns: this.model.get('columns')
+            columns: this.model.get('columns'),
+            colors: {
+              'Debet': 'red',
+              'Credit': 'green'
+            }
           },
           axis: {
             x: {
@@ -65,7 +69,11 @@ App.Views.ChartBody = App.Views.Base.extend({
               'Credit': 'credit_dates'
             },
             columns: this.model.get('columns'),
-            type: 'bar'
+            type: 'bar',
+            colors: {
+              'Debet': 'red',
+              'Credit': 'green'
+            }
           },
           bar: {
             width: {
