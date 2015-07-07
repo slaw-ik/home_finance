@@ -24,5 +24,6 @@
 //= require ./lib/bootstrap-datepicker
 //= require ./lib/c3/d3.min
 //= require ./lib/c3/c3.min
+//= require ./lib/highcharts
 //= require_directory ./lib/locales
 //= require ./app/home_finance

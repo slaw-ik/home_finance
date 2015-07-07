@@ -5,7 +5,6 @@ App.Views.ChartHeader = App.Views.Base.extend({
     var me = this;
     if (_.isObject(arguments[0])) {
       _.each(arguments[0], function (val, key) {
-        //console.log(key, val);
         me.model.set(key, val);
       })
     } else {

@@ -14,16 +14,18 @@ class DashboardController < ApplicationController
                            .select(:category_id, "SUM(amount) as sum_amount")
                            .collect { |trans|
           sum +=trans.sum_amount
-          [trans.category.name, trans.sum_amount]
+          {name: trans.category.name, y: trans.sum_amount}
         }
         result ={columns: transactions, total: sum.round(2)}
       when 'tendency'
         tendency = Sum.get_tendency(date_from, date_to)
 
-        result = {columns: [tendency[:debet_sums].map { |s| s.date_from }.unshift('debet_dates'),
-                            tendency[:credit_sums].map { |s| s.date_from }.unshift('credit_dates'),
-                            tendency[:debet_sums].map { |s| s.value }.unshift('Debet'),
-                            tendency[:credit_sums].map { |s| s.value }.unshift('Credit')]}
+        result = {categories: tendency[:debet_sums].map { |s| s.date_from } + tendency[:credit_sums].map { |s| s.date_from },
+                  series: [{name: 'Debet',
+                            data: tendency[:debet_sums].map { |s| s.value }},
+                           {name: 'Credit',
+                            data: tendency[:credit_sums].map { |s| s.value }}
+                  ]}
 
       when 'bar'
         debet_sums = Sum.month_debets(date_from, date_to)

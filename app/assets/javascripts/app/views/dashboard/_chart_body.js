@@ -2,41 +2,53 @@ App.Views.ChartBody = App.Views.Base.extend({
   template: HandlebarsTemplates['dashboard/chart_body'],
 
   drawChart: function () {
-    var bindto = this.$el.find("#myChart").get(0);
+    var bindto = this.$el.find("#myChart");
 
     switch (this.model.get('type')) {
       case 'debet':
-        this.chart = c3.generate({
-          bindto: bindto,
-          data: {
-            columns: this.model.get('columns'),
-            type: 'donut',
-            onclick: function (d, element) {
-              return false
+        this.chart = bindto.highcharts({
+          chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+          },
+          title: {
+            text: this.model.get('total') + ' €',
+            verticalAlign: 'middle',
+            floating: true
+          },
+          tooltip: {
+            headerFormat: '',
+            pointFormat: '<span style="color:{point.color}">\u25CF</span> {point.name}: <b>{point.y} €</b>'
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                enabled: true,
+                format: "({point.percentage:.1f}%) {point.name} "
+              },
+              innerSize: '50%',
+              showInLegend: false
             }
           },
-          donut: {
-            label: {
-              format: function (value, ratio, id) {
-                return '€ ' + value.toFixed(2).replace(/./g, function (c, i, a) {
-                    return i && c !== "." && ((a.length - i) % 3 === 0) ? ',' + c : c;
-                  });
-              }
-            },
-            width: 90,
-            title: "Total: € " + this.model.get('total')
-          },
-          legend: {
-            item: {
-              onclick: function (id) {
-                return false;
-              }
-            },
-            position: 'right'
-          }
+          //legend: {
+          //  align: 'right',
+          //  verticalAlign: 'top',
+          //  layout: 'vertical',
+          //  x: 0,
+          //  y: 100
+          //},
+          series: [{
+            series: '',
+            colorByPoint: true,
+            data: this.model.get('columns')
+          }]
         });
         break;
-      case 'tendency':
+      case 'tendency_old':
         this.chart = c3.generate({
           bindto: bindto,
           data: {
@@ -59,6 +71,37 @@ App.Views.ChartBody = App.Views.Base.extend({
             }
           }
         });
+        break;
+      case 'tendency':
+        this.chart = bindto.highcharts({
+          chart: {
+            type: 'line'
+          },
+          title: {
+            text: 'Monthly Average Temperature'
+          },
+          subtitle: {
+            text: 'Source: WorldClimate.com'
+          },
+          xAxis: {
+            categories: this.model.get('categories')
+          },
+          yAxis: {
+            title: {
+              text: 'Temperature (°C)'
+            }
+          },
+          plotOptions: {
+            line: {
+              dataLabels: {
+                enabled: true
+              },
+              enableMouseTracking: false
+            }
+          },
+          series: this.model.get('series')
+        });
+
         break;
       case 'bar':
         this.chart = c3.generate({
@@ -92,6 +135,7 @@ App.Views.ChartBody = App.Views.Base.extend({
           }
         });
         break;
+
       case 'bucket_state':
         this.chart = c3.generate({
           bindto: bindto,
