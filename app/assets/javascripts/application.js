@@ -16,14 +16,13 @@
 //= require ./lib/underscore
 //= require ./lib/backbone
 //= require ./lib/moment-with-locales.min
-//= require ./lib/handlebars_helper
+//= require lib/utils/handlebars_helper
+//= require lib/utils/bootstrap_helper
 //= require ./lib/tablesort
 //= require ./lib/sorts/tablesort.numeric
 //= require ./lib/sorts/tablesort.date
 //= require bootstrap.min
 //= require ./lib/bootstrap-datepicker
-//= require ./lib/c3/d3.min
-//= require ./lib/c3/c3.min
 //= require ./lib/highcharts
 //= require_directory ./lib/locales
 //= require ./app/home_finance

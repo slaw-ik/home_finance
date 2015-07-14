@@ -10,9 +10,9 @@ class DashboardController < ApplicationController
         sum = 0
         transaction_type = TransactionType.find_by_name('debet')
         transactions = Transaction.includes(:category).group(:category_id)
-        .where(:date => date_from..date_to, :transaction_type => transaction_type)
-        .select(:category_id, "SUM(amount) as sum_amount")
-        .collect { |trans|
+                           .where(:date => date_from..date_to, :transaction_type => transaction_type)
+                           .select(:category_id, "SUM(amount) as sum_amount")
+                           .collect { |trans|
           sum +=trans.sum_amount
           {name: trans.category.name, y: trans.sum_amount}
         }
@@ -58,19 +58,17 @@ class DashboardController < ApplicationController
                             data: credits}
                   ]}
       when 'bucket_state'
-        if (date_to.to_date-date_from.to_date) > 60
-          bucket_states = Sum.month_bucket_sates(date_from, date_to)
-        else
-          bucket_states = Sum.day_bucket_sates(date_from, date_to)
-        end
+        b_states = Sum.day_bucket_sates(date_from, date_to)
 
-        result = {columns: [bucket_states.map { |s| s.date_from }.unshift('debet_dates'),
-                            bucket_states.map { |s| s.value }.unshift('Bucket state')]}
+        bucket_states = {}
+        b_states.each { |s| bucket_states[s.date_from.to_s] = s.value }
+        dates = bucket_states.keys.sort
+        states = dates.map { |d| [Time.parse(d).utc.to_i*1000, bucket_states[d]] }
 
-        result = {categories: bucket_states.map { |s| s.date_from },
-                  series: [{name: 'Bucket state',
-                            data: bucket_states.map { |s| s.value }}
-                  ]}
+        result = {series: [{name: 'Bucket state',
+                            data: states,
+                            type: 'area'}
+        ]}
       else
         # type code here
     end

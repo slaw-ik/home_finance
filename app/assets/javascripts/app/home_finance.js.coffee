@@ -13,5 +13,14 @@ window.App =
 
   initialize: ->
     moment.locale('uk')
+
+    Highcharts.setOptions
+      global:
+        useUTC: false
+      lang:
+        months: moment.months()
+        weekdays: moment.weekdays()
+        shortMonths: moment.monthsShort()
+
     new App.Routers.MainRouter()
     Backbone.history.start()

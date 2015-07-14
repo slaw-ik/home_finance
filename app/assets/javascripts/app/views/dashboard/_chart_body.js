@@ -97,41 +97,32 @@ App.Views.ChartBody = App.Views.Base.extend({
           series: this.model.get('series')
         });
         break;
-      case 'bucket_state_old':
-        this.chart = c3.generate({
-          bindto: bindto,
-          data: {
-            xs: {
-              'Bucket state': 'debet_dates'
-            },
-            columns: this.model.get('columns'),
-            type: 'area'
-          },
-          axis: {
-            x: {
-              type: 'timeseries',
-              tick: {
-                format: '%d-%m-%Y'
-              }
-            }
-          }
-        });
-        break;
       case 'bucket_state':
         this.chart = bindto.highcharts({
           chart: {
-            type: 'area'
+            zoomType: 'x'
           },
+          //xAxis: {
+          //  categories: this.model.get('categories')
+          //},
           xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            type: 'datetime'
           },
-
-          series: [
-            {
-              data: [29.9, 71.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4],
-              color: '#FF0000'
+          plotOptions: {
+            area: {
+              marker: {
+                radius: 2
+              },
+              lineWidth: 1,
+              states: {
+                hover: {
+                  lineWidth: 1
+                }
+              },
+              threshold: null
             }
-          ]
+          },
+          series: this.model.get('series')
         });
         break;
       default:
