@@ -26,16 +26,14 @@ class DashboardController < ApplicationController
         tendency[:debet_sums].each { |s| debet_sums[s.date_from.to_s] = s.value }
         tendency[:credit_sums].each { |s| credit_sums[s.date_from.to_s] = s.value }
         dates = (debet_sums.keys | credit_sums.keys).sort
-        debets = dates.map { |d| debet_sums[d] }
-        credits = dates.map { |d| credit_sums[d] }
+        debets = dates.map { |d| [Time.parse(d).utc.to_i*1000, debet_sums[d]] }
+        credits = dates.map { |d| [Time.parse(d).utc.to_i*1000, credit_sums[d]] }
 
-
-        result = {categories: dates,
-                  series: [{name: 'Debet',
+        result = {series: [{name: 'Дохід',
                             data: debets},
-                           {name: 'Credit',
+                           {name: 'Розхід',
                             data: credits}
-                  ]}
+        ]}
 
       when 'bar'
         d_sums = Sum.month_debets(date_from, date_to)
@@ -47,16 +45,15 @@ class DashboardController < ApplicationController
         d_sums.each { |s| debet_sums[s.date_from.to_s] = s.value }
         c_sums.each { |s| credit_sums[s.date_from.to_s] = s.value }
         dates = (debet_sums.keys | credit_sums.keys).sort
-        debets = dates.map { |d| debet_sums[d] }
-        credits = dates.map { |d| credit_sums[d] }
+        debets = dates.map { |d| [Time.parse(d).utc.to_i*1000, debet_sums[d]] }
+        credits = dates.map { |d| [Time.parse(d).utc.to_i*1000, credit_sums[d]] }
 
 
-        result = {categories: dates,
-                  series: [{name: 'Debet',
+        result = {series: [{name: 'Дохід',
                             data: debets},
-                           {name: 'Credit',
+                           {name: 'Розхід',
                             data: credits}
-                  ]}
+        ]}
       when 'bucket_state'
         b_states = Sum.day_bucket_sates(date_from, date_to)
 
@@ -65,7 +62,7 @@ class DashboardController < ApplicationController
         dates = bucket_states.keys.sort
         states = dates.map { |d| [Time.parse(d).utc.to_i*1000, bucket_states[d]] }
 
-        result = {series: [{name: 'Bucket state',
+        result = {series: [{name: 'Стан гаманця',
                             data: states,
                             type: 'area'}
         ]}

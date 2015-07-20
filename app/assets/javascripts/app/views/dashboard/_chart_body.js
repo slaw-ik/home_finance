@@ -2,7 +2,7 @@ App.Views.ChartBody = App.Views.Base.extend({
   template: HandlebarsTemplates['dashboard/chart_body'],
 
   drawChart: function () {
-    var bindto = this.$el.find("#myChart");
+    var bindto = this.$el.find(".chart-section");
 
     switch (this.model.get('type')) {
       case 'debet':
@@ -56,17 +56,14 @@ App.Views.ChartBody = App.Views.Base.extend({
             type: 'line'
           },
           title: {
-            text: 'Monthly Average Temperature'
-          },
-          subtitle: {
-            text: 'Source: WorldClimate.com'
+            text: this.model.get('title')
           },
           xAxis: {
-            categories: this.model.get('categories')
+            type: 'datetime'
           },
           yAxis: {
             title: {
-              text: 'Temperature (°C)'
+              text: 'Сума (€)'
             }
           },
           plotOptions: {
@@ -86,8 +83,16 @@ App.Views.ChartBody = App.Views.Base.extend({
           chart: {
             type: 'column'
           },
+          title: {
+            text: this.model.get('title')
+          },
           xAxis: {
-            categories: this.model.get('categories')
+            type: 'datetime'
+          },
+          yAxis: {
+            title: {
+              text: 'Сума (€)'
+            }
           },
           plotOptions: {
             series: {
@@ -102,11 +107,16 @@ App.Views.ChartBody = App.Views.Base.extend({
           chart: {
             zoomType: 'x'
           },
-          //xAxis: {
-          //  categories: this.model.get('categories')
-          //},
+          title: {
+            text: this.model.get('title')
+          },
           xAxis: {
             type: 'datetime'
+          },
+          yAxis: {
+            title: {
+              text: 'Сума (€)'
+            }
           },
           plotOptions: {
             area: {
