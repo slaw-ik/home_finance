@@ -53,7 +53,8 @@ App.Views.ChartBody = App.Views.Base.extend({
       case 'tendency':
         this.chart = bindto.highcharts({
           chart: {
-            type: 'line'
+            type: 'line',
+            zoomType: 'x'
           },
           title: {
             text: this.model.get('title')
@@ -71,7 +72,7 @@ App.Views.ChartBody = App.Views.Base.extend({
               dataLabels: {
                 enabled: true
               },
-              enableMouseTracking: false
+              enableMouseTracking: true
             }
           },
           series: this.model.get('series')

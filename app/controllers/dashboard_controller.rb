@@ -29,10 +29,12 @@ class DashboardController < ApplicationController
         debets = dates.map { |d| [Time.parse(d).utc.to_i*1000, debet_sums[d]] }
         credits = dates.map { |d| [Time.parse(d).utc.to_i*1000, credit_sums[d]] }
 
-        result = {series: [{name: 'Дохід',
-                            data: debets},
-                           {name: 'Розхід',
-                            data: credits}
+        result = {series: [{name: 'Розхід',
+                            data: debets,
+                            color: '#f7a35c'},
+                           {name: 'Дохід',
+                            data: credits,
+                            color: '#90ed7d'}
         ]}
 
       when 'bar'
@@ -49,10 +51,12 @@ class DashboardController < ApplicationController
         credits = dates.map { |d| [Time.parse(d).utc.to_i*1000, credit_sums[d]] }
 
 
-        result = {series: [{name: 'Дохід',
-                            data: debets},
-                           {name: 'Розхід',
-                            data: credits}
+        result = {series: [{name: 'Розхід',
+                            data: debets,
+                            color: '#f7a35c'},
+                           {name: 'Дохід',
+                            data: credits,
+                            color: '#90ed7d'}
         ]}
       when 'bucket_state'
         b_states = Sum.day_bucket_sates(date_from, date_to)

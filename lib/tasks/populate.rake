@@ -31,7 +31,7 @@ namespace :db do
   task :from_file => :environment do
     require 'csv'
 
-    csv_text = File.read('public/hf.csv')
+    csv_text = File.read('public/hf2.csv')
     csv = CSV.parse(csv_text, :headers => true)
 
     result = {}
@@ -69,6 +69,7 @@ namespace :db do
             :amount => values[29].gsub(/[^0-9\,\.\-]/, '').gsub(',', '.').to_f,
             :date => date}
         Transaction.create!(transaction)
+        puts transaction.inspect
       end
 
 
