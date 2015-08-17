@@ -51,10 +51,11 @@ App.Models.Transaction = Backbone.Model.extend({
 App.Collections.Transactions = Backbone.Collection.extend({
   model: App.Models.Transaction,
   url: function () {
-    return '/transactions?type=' + this.type
+    return '/transactions?type=' + this.type + '&date=' + this.date
   },
 
   initialize: function (params) {
     this.type = params['type'] ? params['type'] : 'debet';
+    this.date = params['date'] ? params['date'] : moment().format('DD/MM/YYYY');
   }
 });
