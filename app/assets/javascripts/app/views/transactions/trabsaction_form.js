@@ -76,23 +76,31 @@ App.Views.TransactionForm = App.Views.Base.extend({
 
   addTransaction: function (e) {
     e.preventDefault();
-    this.cleanErrors();
-    this.model.set({
-      date: moment($('#transaction_date').val(), 'D MMM. YYYY').format('DD/MM/YYYY'),
-      title: $('#transaction_title').val(),
-      amount: $('#transaction_amount').val(),
-      category_id: $('#transaction_category_id').val(),
-      currency_id: $('#transaction_currency_id').val()
-    });
-    this.model.save({}, {
-        success: function (model) {
-          App.Vent.trigger("transaction:create", model)
-        },
-        error: function (model) {
-          App.Vent.trigger("transaction:SavingError", model)
+    console.log(this.model.locked);
+    if (!this.model.locked) {
+      this.disableElement(e.currentTarget);
+      this.cleanErrors();
+      this.model.set({
+        date: moment($('#transaction_date').val(), 'D MMM. YYYY').format('DD/MM/YYYY'),
+        title: $('#transaction_title').val(),
+        amount: $('#transaction_amount').val(),
+        category_id: $('#transaction_category_id').val(),
+        currency_id: $('#transaction_currency_id').val(),
+        locked: true
+      });
+      this.model.save({}, {
+          success: function (model) {
+            model.set('locked', false);
+            App.Vent.trigger("transaction:create", model)
+          },
+          error: function (model) {
+            model.set('locked', false);
+            App.Vent.trigger("transaction:SavingError", model)
+          }
         }
-      }
-    )
+      );
+      this.enableElement(e.currentTarget);
+    }
   }
 
 });

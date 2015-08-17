@@ -24,8 +24,17 @@ App.Views.Base = Backbone.View.extend({
     return this;
   },
 
-  renderNested: function( view, selector ) {
-    var $element = ( selector instanceof $ ) ? selector : this.$( selector );
-    view.setElement( $element ).render();
+  renderNested: function (view, selector) {
+    var $element = ( selector instanceof $ ) ? selector : this.$(selector);
+    view.setElement($element).render();
+  },
+
+  disableElement: function (element) {
+    $(element).attr('disabled', 'disabled');
+  },
+
+  enableElement: function (element) {
+    $(element).removeAttr('disabled');
   }
+
 });
