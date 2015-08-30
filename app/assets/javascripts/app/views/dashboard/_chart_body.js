@@ -2,7 +2,8 @@ App.Views.ChartBody = App.Views.Base.extend({
   template: HandlebarsTemplates['dashboard/chart_body'],
 
   drawChart: function () {
-    var bindto = this.$el.find(".chart-section");
+    var me = this,
+      bindto = this.$el.find(".chart-section");
 
     switch (this.model.get('type')) {
       case 'debet':
@@ -31,7 +32,14 @@ App.Views.ChartBody = App.Views.Base.extend({
                 format: "({point.percentage:.1f}%) {point.name} "
               },
               innerSize: '50%',
-              showInLegend: false
+              showInLegend: false,
+              point: {
+                events: {
+                  click: function (event) {
+                    me.trigger('pie_clicked', this);
+                  }
+                }
+              }
             }
           },
           //legend: {

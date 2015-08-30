@@ -39,8 +39,6 @@ App.Views.ChartHeader = App.Views.Base.extend({
         dateFrom = moment().subtract(monthsCount, 'months').startOf('month');
       me.$('#datepicker #start').datepicker('setDate', dateFrom.format('DD-MM-YYYY'));
       me.$('#datepicker #end').datepicker('setDate', dateTo.format('DD-MM-YYYY'));
-
-
     })
   }
 

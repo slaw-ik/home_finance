@@ -12,6 +12,7 @@ App.Views.Chart = App.Views.Base.extend({
         dateTo: model.get('dateTo').format('DD/MM/YYYY')
       },
       success: function () {
+        me.$('.chert_details').hide();
         me._body.drawChart();
       }
     });

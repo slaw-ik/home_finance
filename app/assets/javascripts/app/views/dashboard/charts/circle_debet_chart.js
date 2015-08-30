@@ -1,4 +1,6 @@
 App.Views.CircleDebetChart = App.Views.Chart.extend({
+  className: 'chart container',
+  template: HandlebarsTemplates['dashboard/charts/circle_debet_chart'],
 
   initialize: function () {
     App.Views.CircleDebetChart.__super__.initialize.apply(this, arguments);
@@ -20,5 +22,35 @@ App.Views.CircleDebetChart = App.Views.Chart.extend({
     this._body = new App.Views.ChartBody({model: this.model});
 
     this.listenTo(this._header, 'changed', this._onModelChanged);
+    this.listenTo(this._body, 'pie_clicked', this._onPieClicked);
+  },
+
+  _onPieClicked: function (section) {
+    if (section.state == "select") {
+      this.hideTable();
+    } else {
+      this.showTable(section.id);
+    }
+  },
+
+  showTable: function (categoryId) {
+    var params = {
+        type: 'debet',
+        categoryId: categoryId,
+        dateFrom: this.model.get('dateFrom').format('DD/MM/YYYY'),
+        dateTo: this.model.get('dateTo').format('DD/MM/YYYY')
+      },
+      transactions = new App.Views.Transactinos({collection: new App.Collections.Transactions(params)});
+    this.$('#transactions-table table tbody').replaceWith(transactions.render().el);
+    this.$('.chert_details').show();
+  },
+
+  hideTable: function () {
+    this.$('.chert_details').hide();
+  },
+
+  render: function () {
+    App.Views.CircleDebetChart.__super__.render.apply(this, arguments);
+    return this;
   }
 });

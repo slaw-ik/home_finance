@@ -14,7 +14,7 @@ class DashboardController < ApplicationController
                            .select(:category_id, "SUM(amount) as sum_amount")
                            .collect { |trans|
           sum +=trans.sum_amount
-          {name: trans.category.name, y: trans.sum_amount}
+          {name: trans.category.name, y: trans.sum_amount, id: trans.category.id}
         }
         result ={columns: transactions, total: sum.round(2)}
       when 'tendency'
