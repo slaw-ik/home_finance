@@ -3,9 +3,11 @@ class TransactionsController < ApplicationController
 
   def index
     transaction_type_id = TransactionType.find_by_name(params[:type]).try(:id)
+    date_from = params[:dateFrom].to_date
+    date_to = params[:dateTo].to_date
     @transactions = current_user.transactions.
         where(transaction_type_id: transaction_type_id,
-              date: params[:dateFrom]..params[:dateTo]).
+              date: date_from..date_to).
         where("category_id #{params[:categoryId].present? ? "= #{params[:categoryId]}" : '> 0'}")
 
     respond_with @transactions.as_json(include: {category: {only: :name},
