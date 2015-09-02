@@ -2,8 +2,8 @@ class DashboardController < ApplicationController
   def report
     result = {}
     type = params[:type]
-    date_from = params[:dateFrom]
-    date_to = params[:dateTo]
+    date_from = params[:dateFrom].to_date
+    date_to = params[:dateTo].to_date
 
     case type
       when 'debet'
