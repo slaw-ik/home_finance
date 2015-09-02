@@ -45,8 +45,8 @@ Category.create!([
                      {user_id: 1, name: 'Покупка техніки', transaction_type_id: 1},
                      {user_id: 1, name: 'Відпочнок і подорожі', transaction_type_id: 1},
                      {user_id: 1, name: 'Подарунки і дні народження', transaction_type_id: 1},
-                     {user_id: 1, name: 'Автомобіль', transaction_type_id: 1},
                      {user_id: 1, name: 'Інше', transaction_type_id: 1},
+                     {user_id: 1, name: 'Автомобіль', transaction_type_id: 1},
                      {user_id: 1, name: 'Навчання', transaction_type_id: 1},
                      {user_id: 1, name: 'Зарплата Мирослав', transaction_type_id: 2},
                      {user_id: 1, name: 'Зарплата Юля', transaction_type_id: 2}

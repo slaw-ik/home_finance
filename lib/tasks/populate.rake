@@ -28,16 +28,17 @@ namespace :db do
     end
   end
 
+  desc "Import data from CSV file"
   task :from_file => :environment do
     require 'csv'
 
-    csv_text = File.read('public/hf2.csv')
+    csv_text = File.read('public/hf_02_09.csv')
     csv = CSV.parse(csv_text, :headers => true)
 
     result = {}
     moths = {"янв." => '01', "февр." => '02', "марта" => '03', "апр." => '04', "мая" => '05', "июня" => '06', "июля" => '07', "авг." => '08', "сент." => '09', "окт." => '10', "нояб." => '11', "дек." => '12'}
 
-    csv.each do |row|
+    csv.each_with_index do |row, index|
       values = row.to_hash.values
       date_str = values[0].split('-')
       date_str[1] = moths[date_str[1]]
@@ -55,8 +56,9 @@ namespace :db do
             :date => date}
         if transaction[:title].present? && transaction[:amount].present?
           Transaction.create!(transaction)
-          puts transaction.inspect
+          # puts transaction.inspect
         end
+
       end
 
       if values[29]
@@ -69,10 +71,12 @@ namespace :db do
             :amount => values[29].gsub(/[^0-9\,\.\-]/, '').gsub(',', '.').to_f,
             :date => date}
         Transaction.create!(transaction)
-        puts transaction.inspect
+        # puts transaction.inspect
       end
 
-
+      percent = (((index+1)*100).to_f/(csv.count)).round(2)
+      STDOUT.write "\r|   #{date}   |   #{percent}%    |"
+      STDOUT.write "\n" if index == csv.count-1
     end
 
   end
