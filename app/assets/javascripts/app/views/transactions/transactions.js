@@ -17,6 +17,8 @@ App.Views.Transactinos = App.Views.Base.extend({
 
   renderTransaction: function (model) {
     v = new App.Views.Transaction({model: model});
-    this.$el.append(v.render().el);
+    if (model.isValid()) {
+      this.$el.append(v.render().el);
+    }
   }
 });
