@@ -1,0 +1,9 @@
+// button background-color hovers
+@mixin btn-hover($bg,$value:7%) {
+    background-color: $bg;
+    &:hover,
+    &:focus, 
+    &:active {
+        background-color: darken($bg,$value) !important;
+    }
+}

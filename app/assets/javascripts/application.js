@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+// require jquery
 //= require ./lib/csrf_hack
 //= require handlebars.runtime
 //= require ./lib/underscore
@@ -21,8 +21,11 @@
 //= require ./lib/tablesort
 //= require ./lib/sorts/tablesort.numeric
 //= require ./lib/sorts/tablesort.date
-//= require bootstrap.min
-//= require ./lib/bootstrap-datepicker
+
+// require bootstrap.min
+// require ./lib/bootstrap-datepicker
+
 //= require ./lib/highcharts
-//= require_directory ./lib/locales
+// require_directory ./lib/locales
+//= require scripts
 //= require ./app/home_finance

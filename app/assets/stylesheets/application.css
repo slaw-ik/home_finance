@@ -10,8 +10,17 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap.min
- *= require_tree .
+ * require bootstrap.min
+ *= require scss/main
+
+ * require bootstrap_main
+
+ *= require charts
+ *= require custom
+ *= require datepicker
+ *= require tablesort
+ *= require transactions
+
  *= require_self
  */
 

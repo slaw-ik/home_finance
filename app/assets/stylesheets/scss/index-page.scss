@@ -1,0 +1,103 @@
+.date-wrapper {
+    background-color: $soft-accent;
+    
+    .info {
+        line-height: 2.5;
+    }
+}
+
+.date-section {
+    
+    .input-field {
+        label {
+            color: #000;
+        }
+        input {
+            border-bottom-color: black;
+        }
+    }
+    
+    .picker__date-display {
+        background-color: $soft-accent;
+    }
+    
+    .picker__weekday-display {
+        background-color: darken($soft-accent,10%);
+    }
+    
+    .picker__close, .picker__today {
+        color:darken($soft-accent,10%);
+    }
+    
+    .picker__year-display {
+        color: #fff;
+    }
+} //date -section
+
+
+.main-data {
+    color: $white;
+    color:$font;
+    text-transform: uppercase;
+    
+    .small {
+        //color: $main-dark;
+    }
+    
+    p {
+        font-size: 1.2rem;
+        //font-weight: 600;
+        color:darken($main-dark,20%);
+        -webkit-margin-before: 0;
+        -webkit-margin-after: 0;
+    }
+    
+    .col {
+        border-right: 1px solid $divider;
+        padding: 15px;
+        &:last-of-type {
+            border-right: none;
+        }
+    }
+    
+}
+
+#radial-chart {
+    width: 100%;
+    height: 450px;
+}
+
+
+
+
+@media only screen and (max-width: 992px) {
+    
+    .main-data {
+        .col {
+            border-bottom: 1px solid $divider;
+            &:nth-of-type(2) {
+                border-right: none;
+            }
+            &:nth-of-type(3),
+            &:nth-of-type(4) {
+                border-bottom: none;
+            }
+        }
+    }
+    
+} //end media
+
+@media only screen and (max-width: 600px) {
+    
+    .main-data {
+        .col {
+            border: none;
+            border-bottom:1px solid $divider;
+            &:nth-of-type(3) {
+                border-bottom:1px solid $divider;
+            }            
+        }
+    }
+    
+}//end media
+

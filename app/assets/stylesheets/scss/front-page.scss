@@ -1,0 +1,50 @@
+.front-header {
+    color: $white;   
+    background-image: url('../bg-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    
+    form.col {
+        padding: 1rem;
+        color: $font;
+        button {
+            width: 100%;
+        }
+    }
+    
+    .overlay {        
+        background-color: fade-out($main,0.1);
+    }
+    
+    .heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        h6 {
+            width: 60%;
+        }
+    }
+    
+    .modal {
+    color: $font;
+        button {
+            margin-top: 20px;
+        }
+    }
+    
+}
+
+#forgot-trigger {
+    color: $main-dark;
+    transition: cover 0.3s ease-in-out;
+    &:hover {
+        cursor: pointer;
+        color: $main;
+    }
+}
+
+#forgot-body {
+    display: none;
+}

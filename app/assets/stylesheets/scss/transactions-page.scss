@@ -1,0 +1,16 @@
+.left-col,
+.right-col {
+    padding: 3rem 15px !important;
+}
+
+
+
+
+@media only screen and (min-width: 993px) {
+    
+   .left-col {
+        min-height: 100vh;
+    } 
+    
+    
+}
