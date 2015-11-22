@@ -1,0 +1,12 @@
+<% error_msg = @messages[:errors][0] if @messages[:errors].present? %>
+<% success_msg = @messages[:success] if @messages[:success].present? %>
+
+var error_msg = '<%= error_msg %>',
+        success_msg = '<%= success_msg %>';
+
+if (!_.isEmpty(success_msg)) {
+  $('#email-restore').addClass('valid').next('label').attr('data-success', success_msg);
+}
+if (!_.isEmpty(error_msg)) {
+  $('#email-restore').addClass('invalid').next('label').attr('data-error', error_msg);
+}

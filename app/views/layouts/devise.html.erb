@@ -37,47 +37,32 @@
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam, corporis!
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, labore.
             </h6>
-            <a href="#" class="accent-btn btn waves-effect waves-light">Demo <i class="material-icons right">visibility</i></a>
-            <a href="#modal1" class="modal-trigger dark-btn btn waves-effect waves-light">Log in <i class="material-icons right">input</i></a>
+            <a href="#" class="accent-btn btn waves-effect waves-light">Demo
+              <i class="material-icons right">visibility</i></a>
+            <a href="#modal1" class="modal-trigger dark-btn btn waves-effect waves-light">Log in
+              <i class="material-icons right">input</i></a>
             <!-- Modal Structure -->
             <div id="modal1" class="modal">
               <div class="modal-content">
-                <!--<form class="row">-->
-                  <!--<div class="input-field col s12">-->
-                    <!--<input id="email" type="email" class="validate">-->
-                    <!--<label for="email">Email</label>-->
-                  <!--</div>-->
-                  <!--<div class="input-field col s12">-->
-                    <!--<input id="password" type="password" class="validate">-->
-                    <!--<label for="password">Password</label>-->
-                  <!--</div>-->
-                  <!--<p class="col s12">-->
-                    <!--<input type="checkbox" id="test6" checked="checked" />-->
-                    <!--<label for="test6">Remember me</label>-->
-                  <!--</p>-->
-                  <!--<div class="col s12">-->
-                    <!--<button class="dark-btn btn waves-effect waves-light" type="submit" >log in</button>-->
-                  <!--</div>-->
-                <!--</form>-->
                 <%= yield %>
                 <div class="divider"></div>
                 <p id="forgot-trigger">Forgot your password?</p>
-                <form id="forgot-body" action="action" class="row">
-                  <div class="input-field col s12">
-                    <input id="email-restore" type="email" class="validate">
-                    <label for="email-restore">Enter your email to renew password</label>
-                  </div>
-                </form>
-              </div><!-- //modal-content -->
-            </div><!-- //modal1 -->
+                <%= render :file => 'devise/passwords/new' %>
+              </div>
+              <!-- //modal-content -->
+            </div>
+            <!-- //modal1 -->
             <!-- //end modal -->
-          </div><!-- //col -->
+          </div>
+          <!-- //col -->
 
           <div class="col m12 l5 offset-l1">
             <div class="row">
               <form class="col s12 card hoverable">
                 <h5 class="center-align">Start using home finance</h5>
+
                 <p class="small center-align">Fill out the form to sign up</p>
+
                 <div class="row">
                   <div class="input-field col s6">
                     <input id="first_name" type="text" class="validate">
@@ -102,39 +87,32 @@
                 </div>
                 <div class="row">
                   <div class="col  s12 m6 offset-m3">
-                    <button class="dark-btn btn waves-effect waves-light" type="submit" name="action">sign up for free</button>
+                    <button class="dark-btn btn waves-effect waves-light" type="submit" name="action">sign up for free
+                    </button>
                   </div>
                 </div>
               </form>
-            </div><!-- //row -->
-          </div><!-- //col -->
+            </div>
+            <!-- //row -->
+          </div>
+          <!-- //col -->
 
-        </div><!-- //row -->
-      </div><!-- //container -->
-    </div><!-- //heading -->
-  </div><!-- //overlay -->
-</header><!-- //front-header -->
-
-
-<!--<div class="container-fluid">-->
-
-  <!--<%#= render 'layouts/messages' %>-->
-
-  <!--<div class="row">-->
-
-    <!--<div class="col-xs-12 col-md-12" id="main-area">-->
-
-      <!--<%#= yield %>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</div>-->
-
+        </div>
+        <!-- //row -->
+      </div>
+      <!-- //container -->
+    </div>
+    <!-- //heading -->
+  </div>
+  <!-- //overlay -->
+</header>
+<!-- //front-header -->
 
 <!--Import jQuery before materialize.js-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>-->
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
 
 </body>
 </html>

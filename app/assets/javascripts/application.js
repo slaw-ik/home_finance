@@ -10,7 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-// require jquery
+//= require jquery
+//= require jquery_ujs
 //= require ./lib/csrf_hack
 //= require handlebars.runtime
 //= require ./lib/underscore
