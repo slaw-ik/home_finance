@@ -11,7 +11,7 @@ class PasswordsController < Devise::PasswordsController
     yield resource if block_given?
 
     if successfully_sent?(resource)
-      @messages = {success: "Reset password instructions sent to  #{resource.email}"}
+      @messages = {success: "Reset password instructions sent to  this email"}
     else
       @messages = {errors: resource.errors.full_messages}
     end

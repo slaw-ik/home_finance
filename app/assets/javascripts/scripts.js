@@ -1,23 +1,23 @@
 (function ( $ ) {
- 
+
     $(document).ready(function() {
-        
-        
-        
+
+
+
         //materialize fn for navbar
          $(".button-collapse").sideNav();
-        
+
         //materialize fn for datepickers
          $('.datepicker').pickadate({
             selectMonths: true, // Creates a dropdown to control month
             selectYears: 15 // Creates a dropdown of 15 years to control year
          });
-        
+
         //materialize fn for selects
         $(document).ready(function() {
             $('select').material_select();
         });
-        
+
         //materialize fn for dropdowns
         $('.dropdown-button').dropdown({
               inDuration: 300,
@@ -28,8 +28,8 @@
               belowOrigin: true, // Displays dropdown below the button
               alignment: 'left' // Displays dropdown with edge aligned to the left of button
             }
-          ); 
-        
+          );
+
         //materialize modal
         $('.modal-trigger').leanModal({
               dismissible: true, // Modal can be dismissed by clicking outside of the modal
@@ -40,29 +40,30 @@
               //complete: function() { alert('Closed'); } // Callback for Modal close
             }
           );
-        
+
         //materialize tabs
         $(document).ready(function () {
             $('ul.tabs').tabs();
         });
-        
+
         //fn for forgot password
         $('#forgot-trigger').click(function() {
             $('#forgot-body').slideToggle();
+            $("#modal1").animate({ scrollTop: 500 }, 300);
         });
-        
+
         //tables
         function tableFilterIcons() {
             var $table = $('table');
-            
+
             $table.find('th').click(function() {
                $(this).closest($table).find('th').removeClass('active');
                $(this).addClass('active');
-            });                 
+            });
         }
-        
+
         tableFilterIcons();
-        
+
         //toggling date-section on index page
         function dateSection() {
             var $trigger = $('.date-section-trigger'),
@@ -72,14 +73,14 @@
                 $dateSection.slideToggle();
             });
         }
-        
+
         dateSection();
     /*
     ==========================================
                    CHARTS
     ==========================================
     */
-        
+
         //Global Styles
         Highcharts.setOptions({
             chart: {
@@ -88,8 +89,8 @@
                 }
             }
         });
-        
-        
+
+
         //radial chart
         $('#radial-chart').highcharts({
         chart: {
@@ -137,9 +138,9 @@
             }]
         }]
     });
-        
+
     //area-chart 
-        
+
     $('#area-chart').highcharts({
         chart: {
             type: 'area'
@@ -197,10 +198,10 @@
                 3395, 3580, 3743, 3919, 4500, 4300, 4100, 3000, 3000,
                 3500, 3300, 3100, 2900, 2700, 2500, 2400, 2300, 2200,
                 2100, 2000, 1900, 1000, 1800, 1700, 1600]
-            
+
         }]
     });//end area chart
-        
+
     //column chart 
     $('#column-chart').highcharts({
         chart: {
@@ -378,10 +379,10 @@
             }]
         }
     });
-        
-        
+
+
     //wallet-chart
-        
+
     $('#wallet-chart').highcharts({
         chart: {
             type: 'line'
@@ -420,7 +421,7 @@
             data: [10.9, 10.2, 14.7, 28.5, 29.9, 35.2, 42.0, 32.6, 28.2,18.3, 6.6, 4.8]
         }]
     });
-        
+
     }); //end ready
- 
+
 }( jQuery ));
