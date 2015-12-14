@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Home FInance v3 (Materialize)</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <!-- Import main styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- -----------------NAVBAR---------------------- -->
+    <nav>
+        <div class="nav-wrapper">
+           <!-- logos -->
+            <a href="#!" class="left logo hide-on-med-and-down">HomeFinance</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse waves-effect left">
+                <i class="material-icons">menu</i>
+            </a>
+            <a href="#!" class="left logo hide-on-large-only">HF</a> 
+            <!-- //logos -->          
+            <ul class="left hide-on-med-and-down">
+                <li><a href="#!">Overview</a></li>
+                <li><a href="#!">Transactions</a></li>
+                <li><a href="#">Calendar</a></li>
+                <li><a href="#">Notes</a></li>
+                <li><a href="#">Tools</a></li>
+            </ul>
+            <a href="#!" class="btn-floating btn-large waves-effect waves-light red right add-btn"><i class="material-icons">add</i></a>
+            <ul class="right hide-on-med-and-down ul-btn">
+                <li>
+                    <!-- Dropdown Trigger -->
+                    <a class='dropdown-button email-btn' href='#' data-activates='dropdown1'>email@email.com <i class="material-icons right">arrow_drop_down</i></a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="http://h-f.herokuapp.com">Log out</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+                </li>
+            </ul><!-- //hide on med and down -->
+            
+            <!-- //mobile nav -->
+            <ul class="side-nav" id="mobile-demo">                
+                <li><img src="assets/images/user.jpg" alt="" class="circle"><strong>email@email.com</strong></li>                 
+                <li><a href="#"><i class="material-icons">insert_chart</i>Overview</a></li>
+                <li><a href="#"><i class="material-icons">attach_money</i>Expenses</a></li>
+                <li><a href="#"><i class="material-icons">today</i>Calendar</a></li>
+                <li><a href="#"><i class="material-icons">turned_in_not</i>Notes</a></li>
+                <li><a href="#"><i class="material-icons">build</i>Tools</a></li>
+                <li><a href="#"><i class="material-icons">settings</i>Settigs</a></li>
+                <li><a href="#"><i class="material-icons">power_settings_new</i>Log out</a></li>  
+            </ul>
+        </div>
+    </nav>
+    <!-- ------------------END of NAVBAR-------------- -->  
+      
+  <div class="row no-mb">           
+        <div class="left-col col s12 m12 l4 hl-section">
+             <ul class="tabs">
+                <li class="tab col s6"><a href="#tab-1" class="active">Add expenses</a></li>
+                <li class="tab col s6"><a href="#tab-2">Add revenue</a></li>
+            </ul>
+            <div id="tab-1">
+                <div class="card no-margin">
+                    <div class="row">
+                        <form action="" class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="date" type="date" class="datepicker">
+                                    <label for="date">Date</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input  id="name" type="text">
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select>
+                                        <option value="1">category 1</option>
+                                        <option value="2">category 2</option>
+                                        <option value="3">category 3</option>
+                                        <option value="4">category 4</option>
+                                        <option value="5">category 5</option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input  id="amount" type="text">
+                                    <label for="amount">Amount</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <select>
+                                        <option value="1">EUR</option>
+                                        <option value="2">USD</option>
+                                        <option value="3">UAH</option>
+                                    </select>
+                                </div>
+                            </div><!-- //row -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <button type="submit" class="dark-btn btn waves-effect waves-light">Add exspenses</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- //row -->
+                </div><!-- //card -->    
+            </div>
+            <div id="tab-2">
+                <div class="card no-margin">
+                    <div class="row">
+                        <form action="" class="col s12">
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input id="date" type="date" class="datepicker">
+                                    <label for="date">Date</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <input  id="name" type="text">
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select>
+                                        <option value="1">category 1</option>
+                                        <option value="2">category 2</option>
+                                        <option value="3">category 3</option>
+                                        <option value="4">category 4</option>
+                                        <option value="5">category 5</option>
+                                    </select>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input  id="amount" type="text">
+                                    <label for="amount">Amount</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <select>
+                                        <option value="1">EUR</option>
+                                        <option value="2">USD</option>
+                                        <option value="3">UAH</option>
+                                    </select>
+                                </div>
+                            </div><!-- //row -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <button type="submit" class="dark-btn btn waves-effect waves-light">Add revenue</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div><!-- //row -->
+                </div><!-- //card --> 
+            </div>
+
+        </div><!-- //col -->
+
+        <div class="right-col col s12 m12 l8">
+            <table class="highlight bordered responsive-table">
+                <thead>
+                    <tr>
+                        <th>&num;</th>
+                        <th class="active"><span>Date</span> <i class="material-icons">arrow_drop_down</i></th>
+                        <th><span>Category</span><i class="material-icons">arrow_drop_down</i></th>
+                        <th><span>Name</span><i class="material-icons">arrow_drop_down</i></th>
+                        <th><span>Amount</span><i class="material-icons">arrow_drop_down</i></th>
+                        <th><span>Currency</span><i class="material-icons">arrow_drop_down</i></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>05.06.2015</td>
+                        <td>Food</td>
+                        <td>Lidl</td>
+                        <td>25.34</td>
+                        <td>EUR</td>
+                        <td>
+                            <a href="#" class="table-options" title="delete"><i class="material-icons">delete</i></a>
+                            <a href="#" class="table-options" title="edit"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>05.06.2015</td>
+                        <td>Food</td>
+                        <td>Lidl</td>
+                        <td>25.34</td>
+                        <td>EUR</td>
+                        <td>
+                            <a href="#" class="table-options" title="delete"><i class="material-icons">delete</i></a>
+                            <a href="#" class="table-options" title="edit"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>05.06.2015</td>
+                        <td>Food</td>
+                        <td>Lorem ipsum dolor.</td>
+                        <td>25.34</td>
+                        <td>EUR</td>
+                        <td>
+                            <a href="#" class="table-options" title="delete"><i class="material-icons">delete</i></a>
+                            <a href="#" class="table-options" title="edit"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>05.06.2015</td>
+                        <td>Food</td>
+                        <td>Lidl</td>
+                        <td>25.34</td>
+                        <td>EUR</td>
+                        <td>
+                            <a href="#" class="table-options" title="delete"><i class="material-icons">delete</i></a>
+                            <a href="#" class="table-options" title="edit"><i class="material-icons">mode_edit</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div><!-- //col -->
+
+    </div><!-- //row -->
+       
+       
+       
+       
+       
+    <!--Import jQuery-->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+    <!-- HightCharts -->
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    <!-- Site Sripts -->
+    <script src="assets/js/scripts.js"></script>    
+
+</body>
+</html>

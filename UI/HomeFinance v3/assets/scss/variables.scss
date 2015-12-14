@@ -1,0 +1,28 @@
+/*
+--------------------------------------------------
+               COLOR PALETTE
+ based on www.materialpalette.com/cyan/deep-orange
+--------------------------------------------------
+*/
+
+// main colors used for backgrounds, navs and other large elements
+$main: #00BCD4; 
+$main-dark:#0097A7;
+$main-light:#B2EBF2;
+
+//contrast colors for smaller elements such as buttons, links etc
+$accent:#FF5722;
+$soft-accent:#ffc107; //for date form on index page
+
+//basic colors
+$font:#212121;
+$font-light:#727272;
+$white:#fff;
+
+//divider 
+$divider:#B6B6B6;
+
+//negative or positive
+$negative: #E91E63;
+$positive:#4CAF50;
+$neutral:#FFC107;

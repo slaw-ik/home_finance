@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Home FInance v3 (Materialize)</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <!-- Import main styles -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- -----------------NAVBAR---------------------- -->
+    <nav>
+        <div class="nav-wrapper">
+           <!-- logos -->
+            <a href="http://docode.com.ua/wp-content/uploads/demo/HomeFinance%20v3/front-page.html" class="left logo hide-on-med-and-down">HomeFinance</a>
+            <a href="#" data-activates="mobile-demo" class="button-collapse waves-effect left">
+                <i class="material-icons">menu</i>
+            </a>
+            <a href="http://docode.com.ua/wp-content/uploads/demo/HomeFinance%20v3/front-page.html" class="left logo hide-on-large-only">HF</a> 
+            <!-- //logos -->          
+            <ul class="left hide-on-med-and-down">
+                <li class="active demo-hl"><a href="http://docode.com.ua/wp-content/uploads/demo/HomeFinance%20v3/index.html">Overview</a></li>
+                <li class="demo-hl"><a href="http://docode.com.ua/wp-content/uploads/demo/HomeFinance%20v3/transactions.html">Transactions</a></li>
+                <li><a href="#">Calendar</a></li>
+                <li><a href="#">Notes</a></li>
+                <li><a href="#">Tools</a></li>
+            </ul>
+            <a href="#!" class="btn-floating btn-large waves-effect waves-light red right add-btn demo-hl"><i class="material-icons">add</i></a>
+            <ul class="right hide-on-med-and-down ul-btn">
+                <li>
+                    <!-- Dropdown Trigger -->
+                    <a class='dropdown-button email-btn' href='#' data-activates='dropdown1'>email@email.com <i class="material-icons right">arrow_drop_down</i></a>
+                    <!-- Dropdown Structure -->
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="http://h-f.herokuapp.com">Log out</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Settings</a></li>
+                    </ul>
+                </li>
+            </ul><!-- //hide on med and down -->
+            
+            <!-- //mobile nav -->
+            <ul class="side-nav" id="mobile-demo">                
+                <li><img src="assets/images/user.jpg" alt="" class="circle"><strong>email@email.com</strong></li>                 
+                <li class="active"><a href="#"><i class="material-icons">insert_chart</i>Overview</a></li>
+                <li><a href="#"><i class="material-icons">attach_money</i>Transactions</a></li>
+                <li><a href="#"><i class="material-icons">today</i>Calendar</a></li>
+                <li><a href="#"><i class="material-icons">turned_in_not</i>Notes</a></li>
+                <li><a href="#"><i class="material-icons">build</i>Tools</a></li>
+                <li><a href="#"><i class="material-icons">settings</i>Settigs</a></li>
+                <li><a href="#"><i class="material-icons">power_settings_new</i>Log out</a></li>  
+            </ul>
+        </div>
+    </nav>
+    <!-- ------------------END of NAVBAR-------------- -->
+  
+ 
+    <section class="date-wrapper">
+        <div class="container">
+            <div class="row no-mb section">
+               <div class="col s12 m8">
+                    <span class="info">Data is displayed for current month </span>
+                </div>
+                <div class="col s12 m4">
+                    <a href="#!" class="date-section-trigger right dark-btn btn waves-effect waves-light">edit</a>
+                </div>
+            </div>
+            <div class="row date-section section">
+                <div class="col s12 m8 offset-m2">
+                    <h5>Pick up dates:</h5>
+                    <div class="row">
+                        <form action="" class="col s12">
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <input id="date-from" type="date" class="datepicker">
+                                    <label for="date-from">From</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <input id="date-to" type="date" class="datepicker">
+                                    <label for="date-to">to</label>
+                                </div>
+                            </div><!-- //row -->
+                            <div class="row">
+                                <div class="col s12">
+                                    <h5>or choose period</h5>
+                                </div>
+                                <div class="input-field col s12">
+                                    <select>
+                                        <option value="1">Current month</option>
+                                        <option value="2">Last 30 days</option>
+                                        <option value="3">Last 90 days</option>
+                                        <option value="4">Last 6 months</option>
+                                        <option value="5">Last year</option>
+                                    </select>
+                                </div>
+                            </div><!-- //row -->
+                        </form>
+                    </div><!-- //row -->
+                </div><!-- //col -->
+            </div>
+        </div><!-- //container -->
+    </section><!-- //date-section -->
+        
+    <section class="section">
+       <h3 class="section-title">expenditures</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col s12 l7">
+                    <div id="radial-chart" class="card">
+                        
+                    </div>
+                </div><!-- //col -->
+                <div class="col s12 l5">
+                    <div class="card">
+                        <table class="responsive-table highlight">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Share</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                <tr>
+                                    <td>Rent</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>Rent</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>Rent</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>Rent</td>
+                                    <td>50%</td>
+                                </tr>
+                                <tr>
+                                    <td>Rent</td>
+                                    <td>50%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div><!-- //card -->
+                </div><!-- //col -->
+                <div class="col s12 l5">
+                        <ul class="collection card">
+                            <li class="collection-item avatar">
+                                <img src="assets/images/user.jpg" alt="" class="circle">
+                                <span class="title">Jack White</span>
+                                <p>
+                                    spent most
+                                </p>
+                                <span class="secondary-content">1234.5 EUR</span>
+                            </li>
+                            <li class="collection-item avatar">
+                               <i class="material-icons circle red">attach_money</i>
+                                <span class="title">Chair from IKEA</span>
+                                <p>
+                                     the most expensive purchase
+                                </p> 
+                                <span class="secondary-content">55.23 EUR</span>
+                            </li>
+                        </ul>
+                </div><!-- //col -->
+            </div><!-- //row -->
+        </div><!-- //container-fluid -->
+    </section><!-- //radial-chart -->  
+    
+    <section class="main-data hl-section">
+        <div class="container-fluid"> 
+            <div class="row section-lg center-align">
+                <div class="col s12 m6 l3">
+                    <h4>12345,56 <span class="small">EUR</span></h4>
+                    <p>profit</p>
+                </div>
+                <div class="col s12 m6 l3">
+                    <h4>12345,56 <span class="small">EUR</span></h4>
+                    <p>expenses</p>
+                </div>
+                <div class="col s12 m6 l3">
+                    <h4>123 <span class="small">EUR</span></h4>
+                    <p>days</p>
+                </div>
+                <div class="col s12 m6 l3">
+                    <h4>23 <span class="small">EUR</span></h4>
+                    <p>profit per day</p>
+                </div>
+            </div><!-- //row -->
+        </div><!-- //container-fluid -->
+    </section>
+    
+    <section class="section">
+        <h3 class="section-title">Revenue</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col s12 l8">
+                    <div id="area-chart" class="card">                        
+                    </div>
+                </div><!-- //col -->
+                <div class="col s12 l4">
+                    <div id="column-chart" class="card">                        
+                    </div>
+                </div><!-- //col -->
+            </div><!-- //row -->
+        </div><!-- //container-fluid -->
+    </section>
+    
+    
+    <section class="section hl-section">
+        <h3 class="section-title">Wallet</h3>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col s12 l5">
+                    <ul class="collection card">
+                       <li class="collection-item avatar">
+                            <i class="material-icons circle amber darken-4">account_balance_wallet</i>
+                            <span class="title">Family wallet</span>
+                            <p>Family's available funds in total</p>
+                            <span class="secondary-content">1234.5 EUR</span>
+                        </li>
+                        <li class="collection-item avatar">
+                            <img src="assets/images/user.jpg" alt="" class="circle">
+                            <span class="title">Jack White</span>
+                            <p>personal wallet</p>
+                            <span class="secondary-content">1234.5 EUR</span>
+                        </li>
+                        <li class="collection-item avatar">
+                            <i class="material-icons circle red">face</i>
+                            <span class="title">Lindsey White</span>
+                            <p>personal wallet</p>
+                            <span class="secondary-content">1234.5 EUR</span>
+                        </li>
+                    </ul>
+                </div><!-- //col -->
+                <div class="col s12 l7">
+                    <div id="wallet-chart" class="card">                        
+                    </div>
+                </div><!-- //col -->
+            </div><!-- //row -->
+        </div><!-- //container-fluid -->
+    </section>
+
+ 
+  <!--Import jQuery-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <!-- Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+  <!-- HightCharts -->
+  <script src="http://code.highcharts.com/highcharts.js"></script>
+  <!-- Site Sripts -->
+  <script src="assets/js/scripts.js"></script>
+  
+</body>
+</html>

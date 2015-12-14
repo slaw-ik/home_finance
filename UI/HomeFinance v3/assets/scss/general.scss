@@ -1,0 +1,236 @@
+body {
+    color: $font;
+}
+
+.container-fluid {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/*
+-----------------------
+        help classes 
+------------------------
+*/
+
+
+.section-lg {
+   padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+}
+
+.hl-section {
+    background-color: #eee;
+}
+
+// typography
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-lowercase {
+    text-transform: lowercase;
+}
+
+.small {
+    color: $font-light;
+    font-size: 0.75em;
+}
+
+.section-title {
+    text-transform: capitalize;
+    font-size: 2.2rem;
+    text-align: center;
+    margin: 3rem 0 4rem 0;
+}
+
+.no-mb {
+    margin-bottom: 0;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+
+//colors
+.positive {
+    color: $positive !important;
+}
+
+.negative {
+    color: $negative !important;
+}
+
+.neutral {
+    color:$neutral !important;
+}
+
+
+
+/*
+-----------------------
+        buttons
+-----------------------
+*/
+
+.dark-btn {
+    @include btn-hover(darken($main-dark,10%));
+}
+
+.dark-btn.active {
+     @include btn-hover(darken($main-dark,20%));
+}
+
+.accent-btn {
+    @include btn-hover($accent);
+}
+
+
+.email-btn {
+    display: inline-block;
+}
+
+/*
+-----------------------
+        forms 
+------------------------
+*/
+
+  
+// label focus color 
+.input-field input[type=text]:focus + label {
+ color: $main-dark;
+}
+
+// label underline focus color 
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid $main-dark;
+ box-shadow: 0 1px 0 0 $main-dark;
+}
+
+// icon prefix focus color 
+.input-field .prefix.active {
+ color: $main-dark;
+}
+
+//calendar 
+
+.picker__date-display {
+    background-color: $main;
+}
+
+.picker__weekday-display {
+    background-color: $main-dark;
+}
+
+.picker__close, .picker__today {
+        color:$main;
+    }
+
+//radio
+input[type="radio"]:not(:checked)+label, input[type="radio"]:checked+label {
+    padding-left: 25px;
+    padding-right: 20px;
+}
+
+
+//dropdowns
+
+.dropdown-content {
+    li span {
+        color:$font !important;
+        transition: color 0.3s ease-in-out !important; 
+        font-size: 1rem !important;
+    }
+    a {
+        color:$font !important;
+        transition: color 0.3s ease-in-out !important; 
+        font-size: 1rem !important;
+    }
+    .divider {
+        background-color: $divider !important;
+    }
+    li:hover a {
+        color: $main-dark !important;
+    }
+}
+
+/*
+-----------------------
+        cards collections
+------------------------
+*/
+
+.card {
+    padding: 10px 15px;
+    overflow: visible;
+    margin: 1rem 0;
+}
+
+.collection .title {
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/*
+------------------------
+        tables
+-----------------------
+*/
+
+.table-options {
+    display: inline-block;
+    padding: 1px 5px;
+    color: $divider;
+    transition: color 0.3s ease-in-out;
+    &:hover {
+        color: $font;
+    }
+}
+
+th {
+    cursor: pointer;
+    
+    i {
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        float: left;
+    }
+    
+    span {
+        float: left;
+    }
+    
+    &:hover i {
+        color: $divider;
+        opacity: 1;
+    }
+    
+    &.active i {
+        color: $font;
+        opacity:1;        
+    }
+}
+        
+/*
+------------------------
+        tabs
+-----------------------
+*/       
+.tabs {
+    
+    & .indicator {
+        background-color: $main-dark;
+    }
+    
+   .tab a {
+       color: $main-dark;
+       font-weight: 600;
+       &:hover {
+          color: darken($main-dark,20%);
+       }
+   }
+    
+}
