@@ -1,4 +1,4 @@
-<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'row'}) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), remote: true, :authenticity_token => true, html: {class: 'row'}) do |f| %>
   <div class="input-field col s12">
     <%= f.email_field :email, autofocus: false, class: 'validate' %>
     <%= f.label :email %>
