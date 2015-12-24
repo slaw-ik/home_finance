@@ -5,8 +5,8 @@ var error_msg = '<%= error_msg %>',
     redirect_path = '<%= redirect_path %>';
 
 if (!_.isEmpty(error_msg)) {
-  $('#user_email, #user_password').addClass('invalid').next('label').attr('data-error', error_msg);
-//  $('#user_password').addClass('invalid');
+//  $('#user_email, #user_password').addClass('invalid').next('label').attr('data-error', errors);
+  $('#user_email, #user_password').addClass('invalid');
   Materialize.toast(error_msg, 5000);
 }
 else {

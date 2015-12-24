@@ -1,0 +1,17 @@
+<% errors = Array(@messages[:errors]) if @messages[:errors].present? %>
+<% redirect_path = @messages[:redirect] if @messages[:redirect].present? %>
+
+var errors = <%= raw errors.to_json %>,
+        redirect_path = '<%= redirect_path %>';
+
+if (!_.isEmpty(errors)) {
+//  $('#user_email, #user_password').addClass('invalid').next('label').attr('data-error', errors);
+  $('#user_email, #user_password, #user_password_confirmation').addClass('invalid');
+  _.each(errors, function (error) {
+    Materialize.toast(error, 5000);
+  })
+
+}
+else {
+  window.location = redirect_path;
+}
