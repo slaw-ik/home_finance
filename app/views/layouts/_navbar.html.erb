@@ -1,41 +1,50 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Home finance</a>
-    </div>
-
-    <% if user_signed_in? -%>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Dashboard</a></li>
-          <li><a href="#transactions/new">Transactions</a></li>
-
+<nav>
+  <div class="nav-wrapper">
+    <!-- logos -->
+    <a href="/" class="left logo hide-on-med-and-down">HomeFinance</a>
+    <a href="#" data-activates="mobile-demo" class="button-collapse waves-effect left">
+      <i class="material-icons">menu</i>
+    </a>
+    <a href="/" class="left logo hide-on-large-only">HF</a>
+    <!-- //logos -->
+    <ul class="left hide-on-med-and-down">
+      <li class="active demo-hl">
+        <a href="/">Overview</a></li>
+      <li class="demo-hl">
+        <a href="#transactions/new">Transactions</a></li>
+      <li><a href="#">Calendar</a></li>
+      <li><a href="#">Notes</a></li>
+      <li><a href="#">Tools</a></li>
+    </ul>
+    <a href="#!" class="btn-floating btn-large waves-effect waves-light red right add-btn demo-hl"><i class="material-icons">add</i></a>
+    <ul class="right hide-on-med-and-down ul-btn">
+      <li>
+        <!-- Dropdown Trigger -->
+        <a class='dropdown-button email-btn' href='#' data-activates='dropdown1'>
+          <%= current_user.email %> <i class="material-icons right">arrow_drop_down</i>
+        </a>
+        <!-- Dropdown Structure -->
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><%= link_to 'Sign out', destroy_user_session_path %></li>
+          <li class="divider"></li>
+          <li><%= link_to 'Settings', edit_user_registration_path %></li>
         </ul>
+      </li>
+    </ul><!-- //hide on med and down -->
 
-        <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <%= current_user.email %>
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><%= link_to 'My info', edit_user_registration_path %></li>
-              <li class="divider"></li>
-              <li><%= link_to 'Sign out', destroy_user_session_path %></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    <% end -%>
+    <!-- //mobile nav -->
+    <ul class="side-nav" id="mobile-demo">
+      <li>
+        <!--<img src="assets/images/user.jpg" alt="" class="circle">-->
+        <strong><%= current_user.email %></strong>
+      </li>
+      <li class="active"><a href="/"><i class="material-icons">insert_chart</i>Overview</a></li>
+      <li><a href="#transactions/new"><i class="material-icons">attach_money</i>Transactions</a></li>
+      <li><a href="#"><i class="material-icons">today</i>Calendar</a></li>
+      <li><a href="#"><i class="material-icons">turned_in_not</i>Notes</a></li>
+      <li><a href="#"><i class="material-icons">build</i>Tools</a></li>
+      <li><a href="#"><i class="material-icons">settings</i>Settigs</a></li>
+      <li><a href="#"><i class="material-icons">power_settings_new</i>Log out</a></li>
+    </ul>
   </div>
-  <!-- /.container-fluid -->
 </nav>

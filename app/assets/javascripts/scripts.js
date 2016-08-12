@@ -8,10 +8,10 @@
          $(".button-collapse").sideNav();
 
         //materialize fn for datepickers
-         $('.datepicker').pickadate({
-            selectMonths: true, // Creates a dropdown to control month
-            selectYears: 15 // Creates a dropdown of 15 years to control year
-         });
+        //  $('.datepicker').pickadate({
+        //     selectMonths: true, // Creates a dropdown to control month
+        //     selectYears: 15 // Creates a dropdown of 15 years to control year
+        //  });
 
         //materialize fn for selects
         $(document).ready(function() {

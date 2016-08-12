@@ -24,7 +24,7 @@
 //= require ./lib/sorts/tablesort.date
 
 // require bootstrap.min
-// require ./lib/bootstrap-datepicker
+//= require ./lib/bootstrap-datepicker
 
 //= require ./lib/highcharts
 // require_directory ./lib/locales

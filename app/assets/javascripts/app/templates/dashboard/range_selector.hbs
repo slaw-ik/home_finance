@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row no-mb section">
+        <div class="col s12 m8">
+            <span class="info">Data is displayed for current month </span>
+        </div>
+        <div class="col s12 m4">
+            <a href="#!" class="date-section-trigger right dark-btn btn waves-effect waves-light">edit</a>
+        </div>
+    </div>
+    <div class="row date-section section">
+        <div class="col s12 m8 offset-m2">
+            <h5>Pick up dates:</h5>
+            <div class="row">
+                <form action="" class="col s12">
+                    <div class="row">
+                        <!--<div class="input-field col s6">-->
+                        <!--<input id="date-from" type="text" class="datepicker">-->
+                        <!--<label for="date-from">From</label>-->
+                        <!--</div>-->
+                        <!--<div class="input-field col s6">-->
+                        <!--<input id="date-to" type="text" class="datepicker">-->
+                        <!--<label for="date-to">to</label>-->
+                        <!--</div>-->
+
+
+                        <div class="input-daterange" id="datepicker">
+
+                            <div class="input-field col s6">
+                                <input id="start" value="{{formatDate dateFrom 'D MMM. YYYY'}}" type="text"
+                                       class="input-sm form-control"
+                                       name="start"
+                                       data-attr="dateFrom"/>
+                                <label for="date-from">From</label>
+
+                            </div>
+                            <!--<span class="input-group-addon">до</span>-->
+                            <div class="input-field col s6">
+
+                                <input id="end" value="{{formatDate dateTo 'D MMM. YYYY'}}" type="text"
+                                       class="input-sm form-control"
+                                       name="end"
+                                       data-attr="dateTo"/>
+                                <label for="date-to">to</label>
+
+                            </div>
+                        </div>
+
+                    </div><!-- //row -->
+                    <div class="row">
+                        <div class="col s12">
+                            <h5>or choose period</h5>
+                        </div>
+                        <div class="input-field col s12">
+                            <select>
+                                <option value="1">Current month</option>
+                                <option value="2">Last 30 days</option>
+                                <option value="3">Last 90 days</option>
+                                <option value="4">Last 6 months</option>
+                                <option value="5">Last year</option>
+                            </select>
+                        </div>
+                    </div><!-- //row -->
+                </form>
+            </div><!-- //row -->
+        </div><!-- //col -->
+    </div>
+</div><!-- //container -->
