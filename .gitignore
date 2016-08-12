@@ -17,3 +17,5 @@
 
 #RubyMine
 .idea/*
+/home_finance.iml
+/railways.cache
