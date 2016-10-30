@@ -3,7 +3,17 @@
  */
 
 App.Views.RangeSelector = App.Views.Base.extend({
-    template: HandlebarsTemplates['dashboard/range_selector'],
+    template: JST['dashboard/range_selector'],
+
+    initialize: function () {
+        App.Views.RangeSelector.__super__.initialize.apply(this, arguments);
+
+        var year = moment().year(),
+            month = moment().month();
+
+        this.dateFrom = moment([year, month]);
+        this.dateTo = moment(this.dateFrom).endOf('month');
+    },
 
     render: function () {
 
