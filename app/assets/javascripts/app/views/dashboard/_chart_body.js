@@ -1,5 +1,5 @@
 App.Views.ChartBody = App.Views.Base.extend({
-  template: HandlebarsTemplates['dashboard/chart_body'],
+  template: JST['dashboard/chart_body'],
 
   drawChart: function () {
     var me = this,

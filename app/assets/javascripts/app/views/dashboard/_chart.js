@@ -1,6 +1,6 @@
 App.Views.Chart = App.Views.Base.extend({
   className: 'chart container',
-  template: HandlebarsTemplates['dashboard/chart'],
+  template: JST['dashboard/chart'],
 
   _onModelChanged: function (model) {
     var me = this;

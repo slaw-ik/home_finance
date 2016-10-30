@@ -1,6 +1,6 @@
 App.Views.CircleDebetChart = App.Views.Chart.extend({
   className: 'chart container',
-  template: HandlebarsTemplates['dashboard/charts/circle_debet_chart'],
+  template: JST['dashboard/charts/circle_debet_chart'],
 
   initialize: function () {
     App.Views.CircleDebetChart.__super__.initialize.apply(this, arguments);

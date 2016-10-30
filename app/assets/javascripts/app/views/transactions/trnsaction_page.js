@@ -1,6 +1,6 @@
 App.Views.TransactionPage = App.Views.Base.extend({
   className: 'container',
-  template: HandlebarsTemplates['transactions/transaction-page'],
+  template: JST['transactions/transaction-page'],
 
   events: {
     'click #debet-tab': 'renderDebetView',

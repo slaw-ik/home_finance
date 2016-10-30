@@ -1,5 +1,5 @@
 App.Views.ChartHeader = App.Views.Base.extend({
-  template: HandlebarsTemplates['dashboard/chart_header'],
+  template: JST['dashboard/chart_header'],
 
   rangeChanged: function () {
     var me = this;
