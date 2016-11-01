@@ -11,8 +11,10 @@ App.Views.RangeSelector = App.Views.Base.extend({
         var year = moment().year(),
             month = moment().month();
 
-        this.dateFrom = moment([year, month]);
-        this.dateTo = moment(this.dateFrom).endOf('month');
+        this.model = new App.Models.Range({
+            dateFrom: moment([year, month]),
+            dateTo: moment(this.dateFrom).endOf('month')
+        });
     },
 
     render: function () {
@@ -38,6 +40,18 @@ App.Views.RangeSelector = App.Views.Base.extend({
         });
 
         return this;
+    },
 
+    rangeChanged: function () {
+        var me = this;
+
+        if (_.isObject(arguments[0])) {
+            _.each(arguments[0], function (val, key) {
+                me.model.set(key, val);
+            })
+        } else {
+            me.model.set(arguments[0], arguments[1]);
+        }
+        this.trigger('changed', this.model);
     }
 });

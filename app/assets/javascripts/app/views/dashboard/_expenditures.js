@@ -12,8 +12,8 @@ App.Views.Expenditures = App.Views.Base.extend({
         this.model = new App.Models.Report({
             type: 'debet',
             rangeSelector: this.rangeSelector,
-            dateFrom: this.rangeSelector.dateFrom,
-            dateTo: this.rangeSelector.dateTo,
+            dateFrom: this.rangeSelector.model.get('dateFrom'),
+            dateTo: this.rangeSelector.model.get('dateTo'),
             title: 'Діаграма витрат за період',
             viewId: 'my1'
         });

@@ -1,0 +1,1 @@
+App.Models.Range = Backbone.Model.extend();

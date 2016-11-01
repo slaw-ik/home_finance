@@ -25,9 +25,9 @@ App.Views.DashboardPage = App.Views.Base.extend({
         me.$el.find('#range_section').append(rangeSelector.render().el);
         me.$el.find('#expenditures').append(expenditures.render().el);
 
-        _.each(charts, function (chart) {
-            me.$el.find('#chart_section').append(chart.render().el);
-        });
+        // _.each(charts, function (chart) {
+        //     me.$el.find('#chart_section').append(chart.render().el);
+        // });
 
         return this;
     },
