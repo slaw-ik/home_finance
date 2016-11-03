@@ -1,9 +1,8 @@
 App.Views.ChartBody = App.Views.Base.extend({
-  template: JST['dashboard/chart_body'],
 
   drawChart: function () {
     var me = this,
-      bindto = this.$el.find(".chart-section");
+      bindto = this.$el;
 
     switch (this.model.get('type')) {
       case 'debet':

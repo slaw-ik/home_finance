@@ -1,10 +1,9 @@
-App.Views.ExpendituresChart = App.Views.Chart.extend({
-    // template: JST['dashboard/expenditures_chart'],
+App.Views.ExpendituresChart = App.Views.PieChart.extend({
+    id: "radial-chart",
+    className: "card",
 
     initialize: function () {
         App.Views.ExpendituresChart.__super__.initialize.apply(this, arguments);
-
-        this._body = new App.Views.ChartBody({model: this.model});
 
         this.listenTo(this.model.get('rangeSelector'), 'changed', this._updateMyModel);
     },

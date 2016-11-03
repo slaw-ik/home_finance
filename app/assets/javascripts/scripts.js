@@ -92,7 +92,7 @@
 
 
         //radial chart
-        $('#radial-chart').highcharts({
+        $('#rrradial-chart').highcharts({
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,

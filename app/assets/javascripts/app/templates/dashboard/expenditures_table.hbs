@@ -1,0 +1,23 @@
+<table class="responsive-table highlight">
+    <thead>
+    <tr>
+        <th>Category</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {{#each columns}}
+        <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.y}} €</td>
+        </tr>
+    {{/each}}
+    </tbody>
+    <tfoot>
+    <tr>
+        <th></th>
+        <th>{{total}} €</th>
+    </tr>
+    </tfoot>
+</table>

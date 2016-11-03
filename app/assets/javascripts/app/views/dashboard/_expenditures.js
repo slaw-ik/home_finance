@@ -19,6 +19,7 @@ App.Views.Expenditures = App.Views.Base.extend({
         });
 
         this._chart = new App.Views.ExpendituresChart({model: this.model});
+        this._table = new App.Views.ExpendituresTable({model: this.model});
     },
 
 
@@ -26,6 +27,7 @@ App.Views.Expenditures = App.Views.Base.extend({
         App.Views.Expenditures.__super__.render.apply(this, arguments);
 
         this.$el.find('.chart-container').append(this._chart.render().el);
+        this.$el.find('.table-container').append(this._table.render().el);
 
         return this;
     }
